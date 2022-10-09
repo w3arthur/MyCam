@@ -21,16 +21,17 @@ namespace SerialComArduino_DotNetFrameWork
             else Console.WriteLine("COM Port error!");
             Console.WriteLine("please enter 1: ");
 
-
-            
             while (true)
             {
                 string intTemp = Console.ReadLine();
+                int intTry = 0;
+                if (!int.TryParse(intTemp, out intTry)) continue;
 
                 myport.WriteLine(intTemp);
-                Console.WriteLine("entered: " + intTemp);
-                Console.WriteLine(myport.ReadLine());
-                Console.WriteLine(myport.ReadLine());
+                //Console.WriteLine(intTemp);
+                Console.Write(myport.ReadLine());
+                Console.Write(myport.ReadLine());
+                Console.WriteLine();
             }
         }
 
