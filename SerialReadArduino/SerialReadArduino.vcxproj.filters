@@ -3,4 +3,10 @@
   <ItemGroup>
     <ClCompile Include="SerialReadArduino.ino" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="SerialReadArduino.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Text.txt" />
+  </ItemGroup>
 </Project>

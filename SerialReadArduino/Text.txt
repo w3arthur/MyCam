@@ -1,0 +1,28 @@
+#define CMDBUFFER_SIZE 32
+
+void setup()
+{
+    pinMode(3, OUTPUT);
+    Serial.begin(9600);
+    Serial.println("Waiting to true or 1 value... ");
+
+}
+
+void loop()
+{
+
+}
+
+
+void serialEvent()
+{
+    while (!Serial.available());
+    String action = Serial.readString();
+    action.trim();
+    Serial.println(action);
+    if (action.equals("true") == 0 || action.equals("1") == 0 )
+        digitalWrite(3, !digitalRead(3));
+  delay(1);
+}
+
+

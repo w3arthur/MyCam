@@ -1,7 +1,3 @@
-// https://www.tinkercad.com/things/7hURa9ntR6y
-
-//led edition
-
 void setup()
 {
     pinMode(3, OUTPUT);
@@ -11,9 +7,17 @@ void setup()
 
 void loop()
 {
-    while (!Serial.available());
-    String action = Serial.readString();
-    Serial.println(action);
-    if (action == "true" || action == "1")
-        digitalWrite(3, !digitalRead(3));
+
 }
+
+
+void serialEvent()
+{
+    while (!Serial.available());
+    int action = Serial.parseInt();
+    if (action == 1 ){ digitalWrite(3, !digitalRead(3)); Serial.println("ok");}
+    else Serial.println();
+    delay(1);
+}
+
+
