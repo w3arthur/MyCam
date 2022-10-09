@@ -9,7 +9,7 @@ namespace SerialComArduino_DotNetFrameWork
 {
     public class Program
     {
-
+        //Only .Net Support Ports development, please use it.
         public static SerialPort myport;
         static void Main(string[] args)
         {
