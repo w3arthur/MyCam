@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SerialComArduino_DotNet", "Desktop_Application_CSharp\SerialComArduino_DotNet\SerialComArduino_DotNet.csproj", "{F298C8DD-E81C-4F2B-A5BB-B16F39DD164E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketIOHandShake", "Desktop_Application_CSharp\SocketIOHandShake\SocketIOHandShake.csproj", "{51690CA4-28F8-4FBB-BEBB-491AACF7EBA1}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SerialReadArduino", "Device_Ardoino_SerialRead_C\SerialReadArduino.vcxproj", "{6C93D76F-B4A3-49E9-BFB4-7F56621482F6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SerialComWrite_Arduino", "Desktop_Application_CSharp\SerialComWrite_Arduino\SerialComWrite_Arduino.csproj", "{5959BBCA-28BB-439B-B6A0-E49C8357A96C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketIOHandShake_CSharp_Nodejs", "Desktop_Application_CSharp\SocketIOHandShake_CSharp_Nodejs\SocketIOHandShake_CSharp_Nodejs.csproj", "{51690CA4-28F8-4FBB-BEBB-491AACF7EBA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,30 +19,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F298C8DD-E81C-4F2B-A5BB-B16F39DD164E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F298C8DD-E81C-4F2B-A5BB-B16F39DD164E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F298C8DD-E81C-4F2B-A5BB-B16F39DD164E}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{F298C8DD-E81C-4F2B-A5BB-B16F39DD164E}.Debug|x64.Build.0 = Debug|Any CPU
-		{F298C8DD-E81C-4F2B-A5BB-B16F39DD164E}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{F298C8DD-E81C-4F2B-A5BB-B16F39DD164E}.Debug|x86.Build.0 = Debug|Any CPU
-		{F298C8DD-E81C-4F2B-A5BB-B16F39DD164E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F298C8DD-E81C-4F2B-A5BB-B16F39DD164E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F298C8DD-E81C-4F2B-A5BB-B16F39DD164E}.Release|x64.ActiveCfg = Release|Any CPU
-		{F298C8DD-E81C-4F2B-A5BB-B16F39DD164E}.Release|x64.Build.0 = Release|Any CPU
-		{F298C8DD-E81C-4F2B-A5BB-B16F39DD164E}.Release|x86.ActiveCfg = Release|Any CPU
-		{F298C8DD-E81C-4F2B-A5BB-B16F39DD164E}.Release|x86.Build.0 = Release|Any CPU
-		{51690CA4-28F8-4FBB-BEBB-491AACF7EBA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{51690CA4-28F8-4FBB-BEBB-491AACF7EBA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{51690CA4-28F8-4FBB-BEBB-491AACF7EBA1}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{51690CA4-28F8-4FBB-BEBB-491AACF7EBA1}.Debug|x64.Build.0 = Debug|Any CPU
-		{51690CA4-28F8-4FBB-BEBB-491AACF7EBA1}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{51690CA4-28F8-4FBB-BEBB-491AACF7EBA1}.Debug|x86.Build.0 = Debug|Any CPU
-		{51690CA4-28F8-4FBB-BEBB-491AACF7EBA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{51690CA4-28F8-4FBB-BEBB-491AACF7EBA1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{51690CA4-28F8-4FBB-BEBB-491AACF7EBA1}.Release|x64.ActiveCfg = Release|Any CPU
-		{51690CA4-28F8-4FBB-BEBB-491AACF7EBA1}.Release|x64.Build.0 = Release|Any CPU
-		{51690CA4-28F8-4FBB-BEBB-491AACF7EBA1}.Release|x86.ActiveCfg = Release|Any CPU
-		{51690CA4-28F8-4FBB-BEBB-491AACF7EBA1}.Release|x86.Build.0 = Release|Any CPU
 		{6C93D76F-B4A3-49E9-BFB4-7F56621482F6}.Debug|Any CPU.ActiveCfg = Debug|x64
 		{6C93D76F-B4A3-49E9-BFB4-7F56621482F6}.Debug|Any CPU.Build.0 = Debug|x64
 		{6C93D76F-B4A3-49E9-BFB4-7F56621482F6}.Debug|x64.ActiveCfg = Debug|x64
@@ -55,6 +31,30 @@ Global
 		{6C93D76F-B4A3-49E9-BFB4-7F56621482F6}.Release|x64.Build.0 = Release|x64
 		{6C93D76F-B4A3-49E9-BFB4-7F56621482F6}.Release|x86.ActiveCfg = Release|Win32
 		{6C93D76F-B4A3-49E9-BFB4-7F56621482F6}.Release|x86.Build.0 = Release|Win32
+		{5959BBCA-28BB-439B-B6A0-E49C8357A96C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5959BBCA-28BB-439B-B6A0-E49C8357A96C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5959BBCA-28BB-439B-B6A0-E49C8357A96C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5959BBCA-28BB-439B-B6A0-E49C8357A96C}.Debug|x64.Build.0 = Debug|Any CPU
+		{5959BBCA-28BB-439B-B6A0-E49C8357A96C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5959BBCA-28BB-439B-B6A0-E49C8357A96C}.Debug|x86.Build.0 = Debug|Any CPU
+		{5959BBCA-28BB-439B-B6A0-E49C8357A96C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5959BBCA-28BB-439B-B6A0-E49C8357A96C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5959BBCA-28BB-439B-B6A0-E49C8357A96C}.Release|x64.ActiveCfg = Release|Any CPU
+		{5959BBCA-28BB-439B-B6A0-E49C8357A96C}.Release|x64.Build.0 = Release|Any CPU
+		{5959BBCA-28BB-439B-B6A0-E49C8357A96C}.Release|x86.ActiveCfg = Release|Any CPU
+		{5959BBCA-28BB-439B-B6A0-E49C8357A96C}.Release|x86.Build.0 = Release|Any CPU
+		{51690CA4-28F8-4FBB-BEBB-491AACF7EBA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51690CA4-28F8-4FBB-BEBB-491AACF7EBA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51690CA4-28F8-4FBB-BEBB-491AACF7EBA1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{51690CA4-28F8-4FBB-BEBB-491AACF7EBA1}.Debug|x64.Build.0 = Debug|Any CPU
+		{51690CA4-28F8-4FBB-BEBB-491AACF7EBA1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{51690CA4-28F8-4FBB-BEBB-491AACF7EBA1}.Debug|x86.Build.0 = Debug|Any CPU
+		{51690CA4-28F8-4FBB-BEBB-491AACF7EBA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51690CA4-28F8-4FBB-BEBB-491AACF7EBA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51690CA4-28F8-4FBB-BEBB-491AACF7EBA1}.Release|x64.ActiveCfg = Release|Any CPU
+		{51690CA4-28F8-4FBB-BEBB-491AACF7EBA1}.Release|x64.Build.0 = Release|Any CPU
+		{51690CA4-28F8-4FBB-BEBB-491AACF7EBA1}.Release|x86.ActiveCfg = Release|Any CPU
+		{51690CA4-28F8-4FBB-BEBB-491AACF7EBA1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
