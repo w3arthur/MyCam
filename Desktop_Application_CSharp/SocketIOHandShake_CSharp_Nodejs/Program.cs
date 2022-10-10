@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using WebSocketSharp;
 
+// change to C# (.NET)
+// NuGet\Install-Package WebSocketSharp -Version 1.0.3-rc11
 
 namespace SocketIOHandShake
 {
