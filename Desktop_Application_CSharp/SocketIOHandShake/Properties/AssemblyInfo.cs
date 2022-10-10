@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SerialComArduino_DotNetFrameWork")]
+[assembly: AssemblyTitle("SocketIOHandShake")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SerialComArduino_DotNetFrameWork")]
+[assembly: AssemblyProduct("SocketIOHandShake")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("36f9a8c5-68df-454f-a846-1579ab4abee4")]
+[assembly: Guid("51690ca4-28f8-4fbb-bebb-491aacf7eba1")]
 
 // Version information for an assembly consists of the following four values:
 //
