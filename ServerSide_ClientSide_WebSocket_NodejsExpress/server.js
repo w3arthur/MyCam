@@ -12,6 +12,11 @@ const getFile = (fileInPublicFolder = '') => path.join(__dirname, public_folder,
 
 
 
+
+const server = createServer(app);
+
+
+
 app.use(require("cookie-parser")());
 app.use(express.json({ extended: false }));
 app.use(express.urlencoded());
@@ -20,7 +25,7 @@ app.get("/", async (req, res) => res.status(200).sendFile(getFile("index.html"))
 app.use("/", express.static(getFile()));  //global public folder
 app.route("*").all((req, res) => res.status(404).send("fail" + JSON.stringify(req.path)) );
 
-const server = createServer(app);
+
 server.listen(PORT, () => console.log(`Listening on port ${PORT}, Express + WS`));
 
 
@@ -29,11 +34,15 @@ const wsServer = new WebSocket.Server({ server , path: "/ws" }) //{port: PORT}
 wsServer.on('connection', (socket) => {
     console.log("A client just connected");
     socket.on('message', (msg) => {
-        console.log("Received message from client " + msg);
-
-       // wsServer.clients.forEach((client) => {client.send(msg)});
+        console.log("Desktop application is connected; message: " + msg);
+        
+        wsServer.clients.forEach((client) => {client.send(msg + " Return :) ")});
 
     });
+    socket.on('close', () => {
+        console.log('A client just disconnected.')
+    });
+
 } );
 
 console.log( (new Date()) + "Server is listening on port " + PORT );
