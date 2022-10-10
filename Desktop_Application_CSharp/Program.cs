@@ -17,7 +17,8 @@ using ErrorEventArgs = WebSocketSharp.ErrorEventArgs;
 //ping to server
 // the port is closed issue (turn off the arduino)
 // on error reset after time...
-
+// if there is no ports
+// if it wrong port
 
 namespace SocketIOHandShake
 {
@@ -33,7 +34,7 @@ namespace SocketIOHandShake
         public static readonly string[] ports = SerialPort.GetPortNames();
 
 
-        public static CancellationTokenSource sourceToken = new CancellationTokenSource(2000);
+        public static CancellationTokenSource sourceToken = new CancellationTokenSource();
 
         static void Main(string[] args)
         {
@@ -46,33 +47,24 @@ namespace SocketIOHandShake
                     //serial port
                     myport.BaudRate = 9600;
                     myport.PortName = ports[ports.Length - 1]; //myport.PortName = "COM3";  //Please fix!
-
-                   
-
-
                     myport.Open();
-                    Console.WriteLine("please enter 1: ");
 
+                    //ws
                     ws.OnClose += Ws_OnClose; ;
-
-                    ws.Connect();
-                       //mess on error
+                    ws.Connect();  //mess on error
                     if (!ws.Ping()) { throw new Exception("There is websocket server issue, selected server: " + WebSocketLocation); }
                     ws.Send(WebSocketApprovalMessage);
                     ws.OnMessage += Ws_OnMessage!; // += add new event handler
 
-                    
-
+                    Console.WriteLine("Please enter 1 from the web api to turn on the lamp:");
                     Console.WriteLine("Please leave the program running!");
                     Console.WriteLine("Sure the Arduino connected first!, selected port: " + myport.PortName);
                     Console.WriteLine("check functionality with " + "http://localhost:5000/api/arduino");
-                    Task.Run(async () => { if (sourceToken.IsCancellationRequested) sourceToken = new CancellationTokenSource(); await ArduinoLed("0"); sourceToken.CancelAfter(2000); });
-          
+                    //ArduinoLed("0");
                     Console.ReadKey();
                 }
             }
             catch (Exception ex)  { Console.Clear(); Console.WriteLine("! "+ex.Message); }
-
 
         }
 
@@ -90,44 +82,29 @@ namespace SocketIOHandShake
             try 
             { 
                 Console.WriteLine(e.Data); //"Received from the server " 
-                Task.Run(async() => {
-
-                    if (sourceToken.IsCancellationRequested) { sourceToken = new CancellationTokenSource(); }
-                    await ArduinoLed(e.Data);
-                    sourceToken.CancelAfter(2000);
-                });
-                
+                ArduinoLed(e.Data);
             }
             catch (Exception ex) { Console.WriteLine(ex.Message); }
         } //Who send, Contain Arguments
 
 
 
-        private static async Task<bool> ArduinoLed(string input)
+        private static void ArduinoLed(string input)
         {
-            await Task.Run( () =>
+            try
             {
-                try
-                {
-                    sourceToken.Token.ThrowIfCancellationRequested();
-                    int intTry = 0;
-                    if (input.Contains(WebSocketApprovalMessage)) return true;
-                    if (!int.TryParse(input, out intTry)) throw new Exception("Input is not an int, the input " + input); ;
-                    if (!myport!.IsOpen) throw new Exception("Arduino port is closed!, port:" + myport.PortName); ;
-                    myport!.WriteLine(input);
-                    //Console.WriteLine(intTemp);
-                    Console.Write(myport.ReadLine());
-                    Console.Write(myport.ReadLine());
-                    Console.WriteLine();
-                    return true;
-                }
-                catch (Exception ex) { throw new Exception("Arduino Issue, Please Reset the program, issue:" + ex.Message); }
-            });
-            return false;
+                int intTry = 0;
+                if (input.Contains(WebSocketApprovalMessage)) return;
+                if (!int.TryParse(input, out intTry) ) throw new Exception("Input is not an int, the input " + input); ;
+                if (!myport!.IsOpen) throw new Exception("Arduino port is closed!, port:" + myport.PortName); ;
+                myport.WriteLine(input);
+                //Console.WriteLine(intTemp);
+                Console.Write(myport.ReadLine());
+                Console.Write(myport.ReadLine());
+                Console.WriteLine();
+            }
+            catch (Exception ex) { throw new Exception( "Arduino Issue, Please Reset the program, issue:" + ex.Message);  }
         }
-
-
-
 
 
     }
