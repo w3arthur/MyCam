@@ -23,12 +23,14 @@ namespace SocketIOHandShake
             Console.WriteLine("Web Socket");
             // Create an instance of WS Client
             //using
-            ws = new WebSocket("ws://127.0.0.1:5000/ws");   //localhost
+            ws = new WebSocket("ws://127.0.0.1:5000/ws_arduino");   //localhost
             ws.Connect();
             ws.Ping();
             ws.Send("desktopApplication");
             ws.OnMessage += Ws_OnMessage; // += add new event handler
-           
+
+
+            Console.WriteLine("Please leave the program running!");
             Console.ReadKey();
 
         }
@@ -36,7 +38,7 @@ namespace SocketIOHandShake
 
         private static void Ws_OnMessage(object sender, MessageEventArgs e) //Who send, Contain Arguments
         {
-            Console.WriteLine("Received from the server " + e.Data);
+            Console.WriteLine(e.Data); //"Received from the server " 
         }
     }
 }
