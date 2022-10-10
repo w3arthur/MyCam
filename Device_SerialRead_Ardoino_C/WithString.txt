@@ -1,4 +1,4 @@
-#define CMDBUFFER_SIZE 32
+// With String
 
 void setup()
 {
