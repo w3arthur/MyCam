@@ -6,10 +6,13 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SerialReadArduino", "Device_SerialRead_Ardoino_C\SerialReadArduino.vcxproj", "{6C93D76F-B4A3-49E9-BFB4-7F56621482F6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProofOfConcept_basics", "ProofOfConcept_basics", "{F76B8076-374E-40BC-A156-F8B3FACE25F4}"
+	ProjectSection(SolutionItems) = preProject
+		Desktop_Application_CSharp\ProofOfConcept_basics\SocketIOHandShake_CSharp_Nodejs_DotNetFramework\SocketIOHandShake_CSharp_Nodejs_DotNetFramework.csproj = Desktop_Application_CSharp\ProofOfConcept_basics\SocketIOHandShake_CSharp_Nodejs_DotNetFramework\SocketIOHandShake_CSharp_Nodejs_DotNetFramework.csproj
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SerialComWrite_Arduino", "Desktop_Application_CSharp\ProofOfConcept_basics\SerialComWrite_Arduino\SerialComWrite_Arduino.csproj", "{114D437A-8C90-4DD7-B70C-598C64E60327}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketIOHandShake_CSharp_Nodejs", "Desktop_Application_CSharp\ProofOfConcept_basics\SocketIOHandShake_CSharp_Nodejs\SocketIOHandShake_CSharp_Nodejs.csproj", "{51690CA4-28F8-4FBB-BEBB-491AACF7EBA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocketIOHandShake_CSharp_Nodejs", "Desktop_Application_CSharp\ProofOfConcept_basics\SocketIOHandShake_CSharp_Nodejs\SocketIOHandShake_CSharp_Nodejs.csproj", "{51690CA4-28F8-4FBB-BEBB-491AACF7EBA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
