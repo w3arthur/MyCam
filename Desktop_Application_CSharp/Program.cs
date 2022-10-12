@@ -38,7 +38,7 @@ namespace SocketIOHandShake
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Web Socket");
+            Console.WriteLine("ArthurCam.com Web, Connection + Arduino Connection:");
             try
             {
                 using (myport = new SerialPort())
