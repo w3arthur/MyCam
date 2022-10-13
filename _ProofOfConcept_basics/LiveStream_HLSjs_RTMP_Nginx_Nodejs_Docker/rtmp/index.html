@@ -7,18 +7,48 @@
     <title>Live Stream</title>
   </head>
   <body>
-    <h2>Live Stream</h2>
+    <h2>Live Stream ArthurCam</h2>
     <video id="video" width="800" controls></video>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <!-- https://github.com/video-dev/hls.js/blob/master/docs/API.md -->
     <!-- Or if you want a more recent alpha version -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/hls.js@alpha"></script> -->
     <script>
+
       var video = document.getElementById("video");
-      var videoSrc = "/hls/test.m3u8";
-      if (Hls.isSupported()) {
-        var hls = new Hls();
+      var videoSrc = "http://localhost/hls/abdi.m3u8";
+
+      video.addEventListener('loadeddata', () => {
+        const i = 0;
+/*
+        const interVal1 = setInterval(() => { //to fix
+          video.currentTime +=  2;
+          if(i++ == 20) clearInterval(interVal1);
+        }, 100);
+*/
+        video.currentTime +=  10000;
+        setInterval(() => { //to fix
+          if(video.paused)  video.currentTime +=  1.5;
+
+          //video.play();
+        }, 1000);
+
+      });
+      
+      var config = {
+        "debug": true,
+        "enableWorker": true,
+        "lowLatencyMode": false,
+        "backBufferLength": 1
+      };
+
+      if (video.canPlayType("application/vnd.apple.mpegurl")) {
+        video.src = videoSrc;
+      } else if (Hls.isSupported()) {
+        var hls = new Hls(config);
         hls.loadSource(videoSrc);
         hls.attachMedia(video);
+        //video.play(); //not work on chrome
       }
       // hls.js is not supported on platforms that do not have Media Source
       // Extensions (MSE) enabled.
@@ -33,9 +63,10 @@
       // video.src URL must be on the user-driven white-list before a 'canplay'
       // event will be emitted; the last video event that can be reliably
       // listened-for when the URL is not on the white-list is 'loadedmetadata'.
-      else if (video.canPlayType("application/vnd.apple.mpegurl")) {
-        video.src = videoSrc;
-      }
+
+      
     </script>
+<br />
+    11111
   </body>
 </html>
