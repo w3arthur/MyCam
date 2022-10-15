@@ -17,7 +17,7 @@
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
 String str = "ABCDEF";
-int i = 1;
+int i = 0;
 void setup() {
   Serial.begin(115200);
 
@@ -37,13 +37,19 @@ void loop() {
   display.clearDisplay();
   display.setTextSize(FONT_SIZE2);
   display.setCursor(DISTANCE_LEFT, DISTANCE_TOP);
-  display.println(str + i++);// Display static text
+  display.println(str);// Display static text
   
   display.setTextSize(FONT_SIZE1);
   display.setCursor(LOGO_DISTANCE_LEFT, LOGO_DISTANCE_TOP);
   display.println("ArthurCam");
  display.setCursor(LOGO_DISTANCE_LEFT + 28, LOGO_DISTANCE_TOP + 8);
   display.println(".com");
+
+   display.setCursor(DISTANCE_LEFT, LOGO_DISTANCE_TOP);
+   display.println(i >= 10 ? String(i) : "0" + String(i) );
+   display.println("  sec");
+   i %= 59;
+   ++i;
   display.display(); 
   delay(1000);
 }

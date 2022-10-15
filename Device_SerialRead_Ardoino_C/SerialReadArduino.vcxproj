@@ -130,6 +130,7 @@
     <ClCompile Include="SerialReadArduino.ino" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\DCIM\100MSDCF\ssd1306-display-MyDevelopment1.ino.JPG" />
     <Image Include="SerialReadArduino.png" />
   </ItemGroup>
   <ItemGroup>
@@ -137,7 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ssd1306-display-DEMO.ino" />
-    <None Include="ssd1306-display-MyDevelopment.ino" />
+    <None Include="ssd1306-display-MyDevelopment1.ino" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
