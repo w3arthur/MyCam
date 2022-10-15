@@ -9,10 +9,10 @@ app.use("/", express.static(path.join(__dirname, "data")));  //global public fol
 
 app.post("/auth", function (req, res) {
   /* This server is only available to nginx */
-  const streamkey = req.body.key;
+  const streamKey = req.body.key;
 
   /* You can make a database of users instead :) */
-  if (streamkey === "supersecret") {
+  if (streamKey === "secretKey") {
     res.status(200).send();
     return;
   }
