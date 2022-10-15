@@ -135,6 +135,10 @@
   <ItemGroup>
     <Text Include="WithString.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ssd1306-display-DEMO.ino" />
+    <None Include="ssd1306-display-MyDevelopment.ino" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
