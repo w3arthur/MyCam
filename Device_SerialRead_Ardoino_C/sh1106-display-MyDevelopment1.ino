@@ -1,10 +1,8 @@
 
 #include "U8glib.h"
 
-
 #define FONT_SIZE1 u8g_font_fixed_v0
 #define FONT_SIZE2 u8g_font_8x13r
-#define FONT_COLOR WHITE
 #define DISTANCE_TOP 36
 #define DISTANCE_LEFT 0
 #define LOGO_DISTANCE_TOP DISTANCE_TOP +  20
@@ -21,18 +19,24 @@ void u8g_prepare(void) {
   u8g.setFontPosTop();
 }
 
-
-uint8_t draw_state = 0;
-
+char userString[19] = "YOUR TEXT HERE \0";
+int second = 1;
 
 void draw(void) {
+
+  
   //u8g.setFont(u8g_font_unifont);  // graphic commands to redraw the complete screen should be placed here  
   u8g.setFont(FONT_SIZE2);
   
-  u8g.drawStr( DISTANCE_LEFT, DISTANCE_TOP, "ABCDEABCDEABCDEZ");  
+  u8g.drawStr( DISTANCE_LEFT, DISTANCE_TOP, userString + '\0');  
   u8g.setFont(FONT_SIZE1);
-  u8g.drawStr( LOGO_DISTANCE_LEFT, LOGO_DISTANCE_TOP, "ArthurCam");  
-  u8g.drawStr( LOGO_DISTANCE_LEFT + 28, LOGO_DISTANCE_TOP + 8, ".com");  
+  u8g.drawStr( LOGO_DISTANCE_LEFT, LOGO_DISTANCE_TOP, "ArthurCam\0");  
+  u8g.drawStr( LOGO_DISTANCE_LEFT + 28, LOGO_DISTANCE_TOP + 8, ".com\0");  
+
+  //char secondString[3] = String(1).c_str();
+  u8g.drawStr( DISTANCE_LEFT + 7, LOGO_DISTANCE_TOP, ( (second < 10 ? "0" + String(second) : "" + String(second)) ).c_str() );
+  u8g.drawStr( DISTANCE_LEFT + 10, LOGO_DISTANCE_TOP + 8, "sec");
+  
 }
 
 
@@ -47,13 +51,12 @@ void setup(void) {
 }
 
 void loop(void) {
-  
-u8g_prepare();
-  // picture loop
+  u8g_prepare();
   u8g.firstPage();  
-  do { draw(); } while( u8g.nextPage() );
-  
+  do { draw(); } while( u8g.nextPage() );  // picture loop
+  //do in parralel
+  second %= 59;
+  ++second;
   delay(1000); // rebuild the picture after some delay
-
 }
 
