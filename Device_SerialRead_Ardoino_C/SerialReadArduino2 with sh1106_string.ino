@@ -9,20 +9,19 @@
 #define LOGO_DISTANCE_LEFT DISTANCE_LEFT + 70
 
 #define TIME_DELAY_FOR_STRING_INPUT 2000
+#define STRING_OUTPUT_VALUE_ACTION_NUMBER 0
+#define RESER_VALUE_ACTION_NUMBER 9
+#define RESET_STRING "YOUR TEXT HERE "
+#define RESET_STRING_ACTION "Your Text Here->"
 #define LED1 3
+
 
 //U8GLIB_SH1106_128X64 u8g(U8G_I2C_OPT_NONE);	// I2C / TWI 
 //U8GLIB_SH1106_128X64 u8g(U8G_I2C_OPT_DEV_0|U8G_I2C_OPT_FAST);	// Dev 0, Fast I2C / TWI
 U8GLIB_SH1106_128X64 u8g(U8G_I2C_OPT_NO_ACK);	// Display which does not send ACK
 
-void u8g_prepare(void) {
-  u8g.setFont(u8g_font_6x10);
-  u8g.setFontRefHeightExtendedText();
-  u8g.setDefaultForegroundColor();
-  u8g.setFontPosTop();
-}
 
-String userString = "YOUR TEXT HERE \0";
+String userString = RESET_STRING;
 
 int second = 1;
 
@@ -46,10 +45,9 @@ void setup(void) {
   pinMode(LED1, OUTPUT);
   Serial.begin(9600);
   Serial.println("Waiting to true or 1 value... ");
-
   // u8g.setRot180(); // flip screen, if required
   //u8g.setHardwareBackup(u8g_backup_avr_spi);  // set SPI backup if required
-  // assign default color value
+  // assign default color value:
   if ( u8g.getMode() == U8G_MODE_R3G3B2 ) u8g.setColorIndex(255); // white
   else if ( u8g.getMode() == U8G_MODE_GRAY2BIT )  u8g.setColorIndex(3); // max intensity
   else if ( u8g.getMode() == U8G_MODE_BW )  u8g.setColorIndex(1); // pixel on
@@ -66,12 +64,24 @@ void loop(void) {
   delay(1000); // rebuild the picture after some delay
 }
 
+
+
 void serialEvent()
 {
     while (!Serial.available());
     int action = Serial.parseInt();
-    if (action == 1 ){ digitalWrite(LED1, !digitalRead(LED1)); Serial.println("ok");}
-    if (action == 9 ){
+    if ( action == RESER_VALUE_ACTION_NUMBER ){
+      userString = RESET_STRING_ACTION;
+      for(int i = 0; i < 2; ++i ){
+          digitalWrite(LED1, HIGH); 
+          delay(500);
+          digitalWrite(LED1, LOW); 
+          delay(500);
+      }
+      Serial.println("ok");
+    }
+    if ( action == 1 ){ digitalWrite(LED1, !digitalRead(LED1)); Serial.println("ok");}
+    else if ( action == STRING_OUTPUT_VALUE_ACTION_NUMBER ){
         String diplayString = "";
         Serial.println("waiting for string, waiting set for (msec): " + String(TIME_DELAY_FOR_STRING_INPUT));
         unsigned long startTime =  millis();
@@ -91,4 +101,12 @@ void serialEvent()
     delay(1);
 }
 
+
+//default settings
+void u8g_prepare(void) {
+  u8g.setFont(u8g_font_6x10);
+  u8g.setFontRefHeightExtendedText();
+  u8g.setDefaultForegroundColor();
+  u8g.setFontPosTop();
+}
 

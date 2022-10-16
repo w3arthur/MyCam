@@ -25,16 +25,19 @@ namespace SocketIOHandShake
     internal class Program
     {
 
-        public static readonly string WebSocketLocation = "ws://127.0.0.1:5000/ws_arduino";  //localhost
-        public static readonly string ApiWebSocketLocation = "http://localhost:5000/api/arduino";
-        public static readonly string ArduinoSerialTestValue = "0";
-        public static readonly string WebSocketApprovalMessage = "desktopApplication";
+        public const string WebSocketLocation = "ws://arthurcam.com:3777/ws_arduino"; //"ws://127.0.0.1:3777/ws_arduino";  //localhost
+        public const string ApiWebSocketLocation = "https://arthurcam.com/api/arduino"; //"http://localhost:3777/api/arduino";   //set to ArthurCam.com
+        public const string WebSocketApprovalMessage = "desktopApplication";
+        public const int ArduinoMaxInputSize = 18;
+        public const string StringOutputValue = "9";
+        public const string SerialFirstConnectValue = "7";
+        public static readonly short[] LedList = { 1 };
+
+        public static readonly string[] ports = SerialPort.GetPortNames();
         public static WebSocket? ws;
         public static SerialPort? myport;
-        public static readonly string[] ports = SerialPort.GetPortNames();
 
-
-        public static CancellationTokenSource sourceToken = new CancellationTokenSource();
+        //public static CancellationTokenSource sourceToken = new CancellationTokenSource();
 
         static void Main(string[] args)
         {
@@ -48,6 +51,8 @@ namespace SocketIOHandShake
                     myport.BaudRate = 9600;
                     myport.PortName = ports[ports.Length - 1]; //myport.PortName = "COM3";  //Please fix!
                     myport.Open();
+                    //ArduinoSerialPostFirstConnection();
+                    //ArduinoSerialPost("Your Text Here<-");
 
                     //ws
                     ws.OnClose += Ws_OnClose; ;
@@ -59,49 +64,80 @@ namespace SocketIOHandShake
                     Console.WriteLine("Please enter 1 from the web api to turn on the lamp:");
                     Console.WriteLine("Please leave the program running!");
                     Console.WriteLine("Sure the Arduino connected first!, selected port: " + myport.PortName);
-                    Console.WriteLine("check functionality with " + "http://localhost:5000/api/arduino");
+                    Console.WriteLine("check functionality with " + ApiWebSocketLocation);
                     //ArduinoLed("0");
-                    Console.ReadKey();
+                    Console.ReadKey();  //fix
                 }
             }
             catch (Exception ex)  { Console.Clear(); Console.WriteLine("! "+ex.Message); }
 
         }
+        ~Program() { /*ws?.Close(); myport?.Dispose();*/}
 
         private static void Ws_OnClose(object? sender, CloseEventArgs e)
-        {
-            Console.Clear();    //mess on error
+        { //message on error
+            Console.Clear();   
             if (!(ws?.Ping() ?? false)) { Console.WriteLine("There is websocket server issue, selected server: " + WebSocketLocation);}
         }
 
-
-        ~Program() { ws?.Close(); myport?.Dispose(); }
-
         private static void Ws_OnMessage(object sender, MessageEventArgs e)
         {
-            try 
-            { 
-                Console.WriteLine(e.Data); //"Received from the server " 
-                ArduinoLed(e.Data);
+            try
+            {  //"Received from the server " 
+                Console.WriteLine(e.Data);
+                ArduinoSerialPost(e.Data);
             }
             catch (Exception ex) { Console.WriteLine(ex.Message); }
         } //Who send, Contain Arguments
 
 
 
-        private static void ArduinoLed(string input)
+        private static void ArduinoSerialPostFirstConnection()
         {
             try
             {
-                int intTry = 0;
+                Console.WriteLine("get start to work with arduino");
+                myport.WriteLine(SerialFirstConnectValue);
+                Console.WriteLine(myport.ReadLine());
+                Console.WriteLine(myport.ReadLine());
+            }
+            catch (Exception ex) { throw new Exception("Arduino first connection fail, issue:" + ex.Message); }
+        }
+
+        private static void ArduinoSerialPost(string input)
+        {
+            try
+            {
+                string inputTrim = input.Trim();
                 if (input.Contains(WebSocketApprovalMessage)) return;
-                if (!int.TryParse(input, out intTry) ) throw new Exception("Input is not an int, the input " + input); ;
                 if (!myport!.IsOpen) throw new Exception("Arduino port is closed!, port:" + myport.PortName); ;
-                myport.WriteLine(input);
+                if (input.Length > ArduinoMaxInputSize) inputTrim = input.Substring(0, ArduinoMaxInputSize); // make string shorter
+                
+                long intTryAll = 0;
+                short intTryFirst = 0;
+                bool inputTryParse = long.TryParse(inputTrim, out intTryAll);
+                bool inputTryFirstParse = short.TryParse(inputTrim.Substring(0, 1), out intTryFirst);
+                if (inputTrim.Length == 1 && inputTryParse && LedList.Contains((short)intTryAll))
+                { // is a 1 number  && is a led
+                    myport.WriteLine(inputTrim);
+                }
+                else if (inputTryFirstParse)
+                { // is a string with first number
+                    //if (input.Length > ArduinoMaxInputSize - 1)  inputTrim = inputTrim.Substring(0, ArduinoMaxInputSize - 1);
+                    myport.WriteLine(StringOutputValue);
+                    myport.WriteLine(inputTrim);
+                }
+                else
+                { //is a string
+                    myport.WriteLine(StringOutputValue);
+                    myport.WriteLine( inputTrim);
+                }
+
+
                 //Console.WriteLine(intTemp);
-                Console.Write(myport.ReadLine());
-                Console.Write(myport.ReadLine());
-                Console.WriteLine();
+                Console.WriteLine(myport.ReadLine());
+                Console.WriteLine(myport.ReadLine());
+
             }
             catch (Exception ex) { throw new Exception( "Arduino Issue, Please Reset the program, issue:" + ex.Message);  }
         }

@@ -1,0 +1,10 @@
+use OBS Studio
+set stream to:
+rtmp://localhost:1935/live
+arthur?key=secretKey
+
+watch on VLC
+rtmp://localhost:1935/live/arthur
+
+hls
+please recheck the address with available ports
