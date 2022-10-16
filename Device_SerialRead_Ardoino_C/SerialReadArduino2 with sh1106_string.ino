@@ -9,16 +9,14 @@
 #define LOGO_DISTANCE_LEFT DISTANCE_LEFT + 70
 
 #define TIME_DELAY_FOR_STRING_INPUT 2000
-#define STRING_OUTPUT_VALUE_ACTION_NUMBER 0
-#define RESER_VALUE_ACTION_NUMBER 9
 #define RESET_STRING "YOUR TEXT HERE "
 #define RESET_STRING_ACTION "Your Text Here->"
 #define LED1 3
 
 
-//U8GLIB_SH1106_128X64 u8g(U8G_I2C_OPT_NONE);	// I2C / TWI 
-//U8GLIB_SH1106_128X64 u8g(U8G_I2C_OPT_DEV_0|U8G_I2C_OPT_FAST);	// Dev 0, Fast I2C / TWI
-U8GLIB_SH1106_128X64 u8g(U8G_I2C_OPT_NO_ACK);	// Display which does not send ACK
+//U8GLIB_SH1106_128X64 u8g(U8G_I2C_OPT_NONE);  // I2C / TWI 
+//U8GLIB_SH1106_128X64 u8g(U8G_I2C_OPT_DEV_0|U8G_I2C_OPT_FAST); // Dev 0, Fast I2C / TWI
+U8GLIB_SH1106_128X64 u8g(U8G_I2C_OPT_NO_ACK); // Display which does not send ACK
 
 
 String userString = RESET_STRING;
@@ -70,18 +68,8 @@ void serialEvent()
 {
     while (!Serial.available());
     int action = Serial.parseInt();
-    if ( action == RESER_VALUE_ACTION_NUMBER ){
-      userString = RESET_STRING_ACTION;
-      for(int i = 0; i < 2; ++i ){
-          digitalWrite(LED1, HIGH); 
-          delay(500);
-          digitalWrite(LED1, LOW); 
-          delay(500);
-      }
-      Serial.println("ok");
-    }
     if ( action == 1 ){ digitalWrite(LED1, !digitalRead(LED1)); Serial.println("ok");}
-    else if ( action == STRING_OUTPUT_VALUE_ACTION_NUMBER ){
+    else if ( action == 9 ){
         String diplayString = "";
         Serial.println("waiting for string, waiting set for (msec): " + String(TIME_DELAY_FOR_STRING_INPUT));
         unsigned long startTime =  millis();
@@ -96,6 +84,16 @@ void serialEvent()
           Serial.println("ok");
         }
         else Serial.println("-");
+    }
+    else if ( action == 42 ){
+      userString = RESET_STRING_ACTION;
+      for(int i = 0; i < 2; ++i ){
+          digitalWrite(LED1, HIGH); 
+          delay(500);
+          digitalWrite(LED1, LOW); 
+          delay(500);
+      }
+      Serial.println("arduino restart");
     }
     else Serial.println("-");
     delay(1);

@@ -37,6 +37,7 @@
         "debug": true,
         "enableWorker": true,
         "lowLatencyMode": false,
+        "startPosition": false,
         "backBufferLength": 0
       };
 
@@ -58,7 +59,8 @@
         }, 800);
         setInterval(() => { //to fix
 
-        }, 50000);
+          hls.startLoad(0);
+        }, 180000);
 
 
 

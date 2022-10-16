@@ -30,7 +30,7 @@ namespace SocketIOHandShake
         public const string WebSocketApprovalMessage = "desktopApplication";
         public const int ArduinoMaxInputSize = 18;
         public const string StringOutputValue = "9";
-        public const string SerialFirstConnectValue = "7";
+        public const string SerialFirstConnectValue = "42";
         public static readonly short[] LedList = { 1 };
 
         public static readonly string[] ports = SerialPort.GetPortNames();
@@ -51,8 +51,8 @@ namespace SocketIOHandShake
                     myport.BaudRate = 9600;
                     myport.PortName = ports[ports.Length - 1]; //myport.PortName = "COM3";  //Please fix!
                     myport.Open();
-                    //ArduinoSerialPostFirstConnection();
-                    //ArduinoSerialPost("Your Text Here<-");
+                    ArduinoSerialPostFirstConnection();
+                    ArduinoSerialPost("Your Text Here<-");
 
                     //ws
                     ws.OnClose += Ws_OnClose; ;
