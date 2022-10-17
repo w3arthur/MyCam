@@ -47,19 +47,22 @@ namespace SocketIOHandShake
                 using (myport = new SerialPort())
                 using (ws = new WebSocket(WebSocketLocation))
                 {
-                    //serial port
+                    //Serial Port
                     myport.BaudRate = 9600;
                     myport.PortName = ports[ports.Length - 1]; //myport.PortName = "COM3";  //Please fix!
                     myport.Open();
-                    ArduinoSerialPostFirstConnection();
-                    ArduinoSerialPost("Your Text Here<-");
 
-                    //ws
+                    //WebSocket
                     ws.OnClose += Ws_OnClose; ;
                     ws.Connect();  //mess on error
                     if (!ws.Ping()) { throw new Exception("There is websocket server issue, selected server: " + WebSocketLocation); }
                     ws.Send(WebSocketApprovalMessage);
                     ws.OnMessage += Ws_OnMessage!; // += add new event handler
+
+                    //Arduino Test
+                    ArduinoSerialPostFirstConnection();
+                    ArduinoSerialPost("Your Text Here<-");
+
 
                     Console.WriteLine("Please enter 1 from the web api to turn on the lamp:");
                     Console.WriteLine("Please leave the program running!");

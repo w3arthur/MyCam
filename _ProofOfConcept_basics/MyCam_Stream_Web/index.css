@@ -1,0 +1,30 @@
+body{ background-image: url('./images/background.png'); background-repeat: no-repeat; background-size: 100% 100%; }
+div.pre_container{ opacity: 1; min-height: 100vh; background-color: rgba(113, 160, 167, 0.615); }
+div.container{ min-height: 100vh; opacity: 1; background-color: rgba(68, 124, 130, 0.493); }
+div.sub_container{ min-height: 90vh; }
+
+img.logo_image, img.logo2_image{ width: auto; ; margin-right: 8px; }
+img.logo_image{height: 80px; margin-bottom: 8px}
+img.logo2_image{margin-left: 50;height: 140px; border-radius: 15%; }
+div.actions, section.actions, h3, footer > div.footer{ font-size: 100%; vertical-align: middle; padding-left: 20px; padding-right: 20px; background-color:  rgba(230, 240, 255, 0.226); border-radius: 5px; }
+h1, h2 { font-size: 125%; vertical-align: middle;}
+div.actions > input.btn{ background-color: rgba(16, 25, 128, 0.767); font-weight: bold; }
+div.actions > input.btn:hover{ color: rgba(241, 71, 71, 0.545); }
+h3.actions > label{ width: 100%; padding-top: 4px;padding-bottom: 4px; vertical-align: middle; }
+select#method, select#sendWith, .actions > .btn{ margin-left: 4px; margin-top: 8px; margin-bottom: 12px }
+
+input#emptyResult, input#emptyMessage{ margin-left: 5px; margin-right: 80px; }
+textarea#result, textarea#message{ font-weight: 600; width: 100%; }
+select#method{ max-width: 80px; margin-right: 4px; }
+input#submit{ margin-right: 40px; font-size: 107%;}
+select#sendWith{ max-width: 160px; }
+textarea#message{ min-height: 180px; }
+textarea#result, iframe#iframeTarget{ min-height: 240px;}
+iframe#iframeTarget{display: none;}
+input#address, input#file, .actions{ font-weight: 600; width: 100%; margin-top: 4px; margin-bottom: 4px; }
+select#method, select#sendWith{ background-color:rgba(21, 87, 181, 0.925); display:inline-block; }
+select#method > option, select#sendWith > option, select#method, select#sendWith{ font-weight: 600; }
+
+footer > div.footer{margin-top: 4px; padding-top: 8px !important; padding-bottom: 4px !important; font-weight: 500; }
+footer.pre_footer {padding-bottom: 4px;}
+footer > div.footer > a{text-decoration: none;}

@@ -11,6 +11,8 @@
 #define TIME_DELAY_FOR_STRING_INPUT 2000
 #define RESET_STRING "YOUR TEXT HERE "
 #define RESET_STRING_ACTION "Your Text Here->"
+#define RESET_SERIAL_INPUT_VALUE 42
+#define STRING_SERIAL_INPUT_VALUE 9
 #define LED1 3
 
 
@@ -69,7 +71,7 @@ void serialEvent()
     while (!Serial.available());
     int action = Serial.parseInt();
     if ( action == 1 ){ digitalWrite(LED1, !digitalRead(LED1)); Serial.println("ok");}
-    else if ( action == 9 ){
+    else if ( action == STRING_SERIAL_INPUT_VALUE ){
         String diplayString = "";
         Serial.println("waiting for string, waiting set for (msec): " + String(TIME_DELAY_FOR_STRING_INPUT));
         unsigned long startTime =  millis();
@@ -85,7 +87,7 @@ void serialEvent()
         }
         else Serial.println("-");
     }
-    else if ( action == 42 ){
+    else if ( action == RESET_SERIAL_INPUT_VALUE ){
       userString = RESET_STRING_ACTION;
       for(int i = 0; i < 2; ++i ){
           digitalWrite(LED1, HIGH); 
