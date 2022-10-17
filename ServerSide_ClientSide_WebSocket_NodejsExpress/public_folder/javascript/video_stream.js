@@ -1,4 +1,5 @@
 
+//let video 
 
 let config = {
     "debug": true,
@@ -9,10 +10,10 @@ let config = {
 };
 
 if (video.canPlayType("application/vnd.apple.mpegurl")) {
-    video.src = videoSrc;
+    video.src = configurations.videoSrc;
 } else if (Hls.isSupported()) {
     var hls = new Hls(config);
-    hls.loadSource(videoSrc);
+    hls.loadSource(configurations.videoSrc);
     hls.attachMedia(video);
     //video.play(); //not work on chrome
 }

@@ -25,8 +25,8 @@ namespace SocketIOHandShake
     internal class Program
     {
 
-        public const string WebSocketLocation = "ws://arthurcam.com:3777/ws_arduino"; //"ws://127.0.0.1:3777/ws_arduino";  //localhost
-        public const string ApiWebSocketLocation = "https://arthurcam.com/api/arduino"; //"http://localhost:3777/api/arduino";   //set to ArthurCam.com
+        public const string WebSocketLocation = "ws://127.0.0.1:3777/ws_arduino";//"ws://arthurcam.com:3777/ws_arduino"; //;  //localhost
+        public const string ApiWebSocketLocation = "http://localhost:3777/api/arduino";//"https://arthurcam.com/api/arduino"; //   //set to ArthurCam.com
         public const string WebSocketApprovalMessage = "desktopApplication";
         public const int ArduinoMaxInputSize = 18;
         public const string StringOutputValue = "9";
