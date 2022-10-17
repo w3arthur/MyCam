@@ -1,5 +1,10 @@
-import Send from './classes/send.js?12234';
+
+
+import Send from './classes/send.js?1234';
 import {getElement, clickEvent,changeEvent} from './javascript/elements.js';
+
+startVideo();
+
     /*1 set await (async) every set */
     /*2 ask if this programs not supply open check for bads from my domain*/
     /*3 local storage saving requests*/
