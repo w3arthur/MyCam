@@ -31,7 +31,7 @@ namespace SocketIOHandShake
         public const int ArduinoMaxInputSize = 18;
         public const string StringOutputValue = "9";
         public const string SerialFirstConnectValue = "42";
-        public static readonly short[] LedList = { 1 };
+        public static readonly short[] LedList = { 1, 2 };  //only 1char, not include StringOutputValue
 
         public static readonly string[] ports = SerialPort.GetPortNames();
         public static WebSocket? ws;
