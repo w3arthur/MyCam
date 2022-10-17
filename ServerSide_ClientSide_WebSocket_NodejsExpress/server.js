@@ -8,7 +8,7 @@ const SECRET_KEY = 'secretKey';
 const ARDUINO_VALUE_MAX_LENGTH = 20;
 const COMMENT_VALUE_MAX_LENGTH = 255;
 const LAST_COMMENT_RETURN = 7;
-const LAST_DISPLAY_TEXT_RETURN = 7;
+const LAST_DISPLAY_TEXT_RETURN = 10;
 const MONGO_DB_CONNECTION_STRING = 'mongodb://localhost:27017/' + 'ArthurCam'; //'mongodb+srv://legopart:WfHIGKcxMGsllNS4@cluster0.uwlwx.mongodb.net/' + 'ArthurCam';
 
 const getLocalFile = (fileInPublicFolder = '') => path.join(__dirname, public_folder, fileInPublicFolder);
@@ -108,6 +108,7 @@ app.route("/api/comments")
         let messageTrim = message;
         if (messageTrim.length > ARDUINO_VALUE_MAX_LENGTH) messageTrim = messageTrim.substring(0, COMMENT_VALUE_MAX_LENGTH);
         if (messageTrim.trim().length === 0) throw new Error();
+        messageTrim = messageTrim.replaceAll('<', '&lt;');
         const data = {message: messageTrim};
         const result = await CommentModel( data ).save();
         return res.status(200).json(result);
