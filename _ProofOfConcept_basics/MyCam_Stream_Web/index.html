@@ -13,105 +13,101 @@
     <!-- Inside Localhost, please run it on "Live Server (port 5500)" With "Access-Control-Alow-Origin" - On //-->
 </head><body><div class="pre_container"><div class="container">
     <div class="sub_container">
-        <header class="row">
-            <section class="col title actions" style="">
-                <img style="margin-top: 6px;float: left;margin-left: 20px; margin-right: 30px; border-radius: 5px;" alt="ArthurCam.com" src="./images/camera.png" class="logo_image">
-                <div style="  margin-top: 15px;"> 
-                    <h1>ArthurCam.com</h1>
-                    <h2>camera stream and control</h2>
-                
+        <header class="row header" style="margin: 2px">
+            <section class="col">
+                <img alt="ArthurCam.com" src="./images/camera.png" class="logo_top_image">
+                <div class="title"> 
+                    <h1>ArthurCam.com</h1> <h2>camera stream and control</h2>
                 </div>
-
             </section>
         </header>
-        <main class="row">
+        <form id="form" target="_self"><main class="row">
             <section class="col-md-6">
-                <form id="form" target="iframeTarget">
-                    <h3 class="actions"><label for="address">STREAM</label></h3>
+                
 
-
-
-
-                    <div class="actions" style="text-align: center">
+                <section class="actions" style="text-align: center;">
+                    <h3 class="actions">STREAM</h3>
+                    <p>
                         <video id="video" style="background-color: rgb(255, 255, 255);width: 100%"></video>
-                        
-                    </div> 
-                    
+                    </p>
+                </section> 
+                
+                
 
-                    <h3 class="actions"><label for="message">LIGHT TURN ON</label></h3>
-                    
-                    <div class="actions">
-                        <input id="emptyResult" type="button" value="LED On/Off" class="btn btn-outline-info btn-sm" />
-                        <input id="emptyResult" type="button" value="Lamp On/Off" class="btn btn-outline-info btn-sm" />
-                        
-                    </div>
-                    
-                    <h3 class="actions">
+                <section class="actions">
+                    <h3 class="actions"><label for="led">LIGHT TURN ON</label></h3>
+                    <p class="actions">
+                        <input id="led" type="button" value="LED On/Off" class="btn btn-outline-info btn-sm" />
+                        <input id="lamp" type="button" value="Lamp On/Off" class="btn btn-outline-info btn-sm" />
+                        <br />
                         Current Visitors # - <br />
-                         *possible delay 12sec, accept only English 18 characters
-                    </h3>
+                        *possible delay 12sec, accept only English 18 characters <br />
+                    </p>
+                </section>
 
-                    <h3 class="actions"><label for="result">PREVIOUS DISPLAY TEXT</label></h3>
-                    <div class="actions" style="margin-bottom: 20px">
+                <section class="actions">
+                    <h3 class="actions">PREVIOUS DISPLAY TEXT</h3>
+                    <p class="actions">
                         - ABCDEFGHIHK - afdgdfgfd - afdgdfgfd - afdgdfgfd<br />
                         - afdgdfgfd - afdgdfgfd -<a href="#"> Show More</a> <br />
-                    </div>
+                    </p>
+                </section>
 
-                </form>
+                <div class="last_column_element"></div>
+            
             </section>
 
 
             <section class="col-md-6">
-                <h3 class="actions"><label for="result">SEND DISPLAY TEXT</label></h3>
-                
-                <input name="address" id="address" type="text" class="form-control" />
-                
-                <div class="actions">
-                    <input id="emptyResult" type="button" value="Send Text" class="btn btn-outline-info btn-sm" />  
-                </div>
-
-                <div class="actions">
-                    <input type="button" id="submit" value="   Reload   " class="btn btn-outline-primary btn-sm" />
-                </div>
-
-                <h3 class="actions"><label for="result">COMMENTS</label></h3>
-
-                <input name="address" id="address" type="text" class="form-control" />
-                
-                <div class="actions">
-                    <input type="button" id="submit" value="   ADD a comment   " class="btn btn-outline-primary btn-sm" />
-                </div>
-
-                <h3 class="actions">PREVIOUS COMMENTS</h3>
-                <div class="actions" style="margin-bottom: 20px">
-                    - afdgdfgfd <br />
-                    - afdgdfgfd <br />
-                    - afdgdfgfd <br />
-                    - afdgdfgfd <br />
-                    - afdgdfgfd <br />
-                    - afdgdfgfd <br />
-                    - afdgdfgfd <br />
-                    - afdgdfgfd <br />
-                    
-                    <a href="#"> Show More</a> <br />
-                </div>
-
-
+                <section class="actions">
+                    <h3 class="actions"><label for="send_text">SEND DISPLAY TEXT</label></h3>
+                    <p>
+                        <input name="send_text" id="send_text" type="text" class="form-control" />
+                        <input id="send_text_button" type="button" value="Send Text" class="btn btn-outline-info btn-sm" />  
+                    </p>
+                </section>
+                <section class="actions">
+                    <h3></h3>
+                    <p>
+                        <input type="button" id="reload" value="   Reload   " class="btn btn-outline-primary btn-sm" />
+                    </p>
+                </section>
+                <section class="actions">
+                    <section class="actions">
+                        <h3 class="actions"><label for="send_comment">COMMENTS</label></h3>
+                        <p>
+                            <input name="send_comment" id="send_comment" type="text" class="form-control" />
+                            <input type="button" id="send_comment_button" value="   ADD a comment   " class="btn btn-outline-primary btn-sm" />
+                        </p>
+                    </section>
+                    <section>
+                        <h3 class="actions"><label for="send_comment_button">PREVIOUS COMMENTS</label></h3>
+                        <p class="actions">
+                            - afdgdfgfd <br />
+                            - afdgdfgfd <br />
+                            - afdgdfgfd <br />
+                            - afdgdfgfd <br />
+                            - afdgdfgfd <br />
+                            - afdgdfgfd <br />
+                            - afdgdfgfd <br />
+                            - afdgdfgfd <br />
+                            <a href="#"> Show More</a> <br />
+                        </p>
+                    </section>
+                </section>
+                <div class="last_column_element"></div>
             </section>
-        </main>
+        </form></main>
     </div>
-    <footer class="page-footer pre_footer">
+    <footer class="page-footer pre_footer" >
         <div class="footer footer-copyright row text-center py-3">
-            <section class="col-md-6" style=""><img class="logo2_image" alt="POST Woman" src="./images/ArthurCam-whatsapp.png" /></section>
+            <section class="col-md-6"><img class="logo_footer_image" alt="POST Woman" src="./images/ArthurCam-whatsapp.png" /></section>
             <section class="col-md-6" style="text-align: left">
-
-                    <div class="actions">
+                    <p class="actions">
                         <a href="https://github.com/w3arthur"> Visit w3arthur GITHUB</a> <br />
                             Thanks for appreciate my effort. <br />
-                        <input id="emptyMessage" type="button" value="Project Documentation" class="btn btn-outline-secondary btn-sm" />
-                    </div>
-                    
-               
+                        <input id="documentation" type="button" value="Project Documentation" class="btn btn-outline-secondary btn-sm" />
+                    </p>
             </section>
             
         </div>
