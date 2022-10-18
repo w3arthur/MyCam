@@ -9,7 +9,7 @@ const ARDUINO_VALUE_MAX_LENGTH = 20;
 const COMMENT_VALUE_MAX_LENGTH = 255;
 const LAST_COMMENT_RETURN = 7;
 const LAST_DISPLAY_TEXT_RETURN = 10;
-const MONGO_DB_CONNECTION_STRING = 'mongodb://localhost:27017/' + 'ArthurCam'; //'mongodb+srv://legopart:WfHIGKcxMGsllNS4@cluster0.uwlwx.mongodb.net/' + 'ArthurCam';
+const MONGO_DB_CONNECTION_STRING = 'mongodb+srv://legopart:WfHIGKcxMGsllNS4@cluster0.uwlwx.mongodb.net/';//'mongodb://localhost:27017/' + 'ArthurCam'; //'mongodb+srv://legopart:WfHIGKcxMGsllNS4@cluster0.uwlwx.mongodb.net/' + 'ArthurCam';
 
 const getLocalFile = (fileInPublicFolder = '') => path.join(__dirname, public_folder, fileInPublicFolder);
 

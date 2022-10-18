@@ -8,6 +8,7 @@ using System.IO.Ports;
 using WebSocketSharp;   // NuGet\Install-Package WebSocketSharp -Version 1.0.3-rc11 // https://github.com/sta/websocket-sharp
 using WebSocket = WebSocketSharp.WebSocket; //try another package or use .Net Framework
 using ErrorEventArgs = WebSocketSharp.ErrorEventArgs;
+using static System.Net.WebRequestMethods;
 
 
 // Add issue if no server
@@ -25,8 +26,8 @@ namespace SocketIOHandShake
     internal class Program
     {
 
-        public const string WebSocketLocation = "ws://127.0.0.1:3777/ws_arduino";//"ws://arthurcam.com:3777/ws_arduino"; //;  //localhost
-        public const string ApiWebSocketLocation = "http://localhost:3777/api/arduino";//"https://arthurcam.com/api/arduino"; //   //set to ArthurCam.com
+        public const string WebSocketLocation = "ws://arthurcam.com:3777/ws_arduino"; //"ws://127.0.0.1:3777/ws_arduino";//"ws://arthurcam.com:3777/ws_arduino"; //;  //localhost
+        public const string ApiWebSocketLocation = "https://arthurcam.com/api/arduino"; //"http://localhost:3777/api/arduino";//"https://arthurcam.com/api/arduino"; //   //set to ArthurCam.com
         public const string WebSocketApprovalMessage = "desktopApplication";
         public const int ArduinoMaxInputSize = 18;
         public const string StringOutputValue = "9";
@@ -59,9 +60,9 @@ namespace SocketIOHandShake
                     ws.Send(WebSocketApprovalMessage);
                     ws.OnMessage += Ws_OnMessage!; // += add new event handler
 
-                    //Arduino Test
-                    ArduinoSerialPostFirstConnection();
-                    ArduinoSerialPost("Your Text Here<-");
+                    //Arduino Test      // fix: it cancels previous user entered string with "Your Text Here->" "Your Text Here<-"
+                    //ArduinoSerialPostFirstConnection();
+                    //ArduinoSerialPost("Your Text Here<-");
 
 
                     Console.WriteLine("Please enter 1 from the web api to turn on the lamp:");
@@ -70,6 +71,8 @@ namespace SocketIOHandShake
                     Console.WriteLine("check functionality with " + ApiWebSocketLocation);
                     //ArduinoLed("0");
                     Console.ReadKey();  //fix
+
+                    Main(new string[] { }); //maked a loop if key is pressed, check if fixed ...
                 }
             }
             catch (Exception ex)  { Console.Clear(); Console.WriteLine("! "+ex.Message); }

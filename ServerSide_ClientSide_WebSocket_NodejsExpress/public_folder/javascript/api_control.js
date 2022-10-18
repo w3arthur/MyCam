@@ -66,6 +66,7 @@ finishLoaded(() => {
         if(str.trim() === '') return;
         new AxiosRequest(() => configurations.commentPostApi(str))
         .GoodResult( (resultData) => {
+            send_comment.value = '';
             feedbackAreaText('Comment message is sent, thanks');
             callCommentsGetApi();
          } )
