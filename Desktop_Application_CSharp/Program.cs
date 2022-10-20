@@ -26,8 +26,8 @@ namespace SocketIOHandShake
     internal class Program
     {
 
-        public const string WebSocketLocation = "ws://arthurcam.com:3777/ws_arduino"; //"ws://127.0.0.1:3777/ws_arduino";//"ws://arthurcam.com:3777/ws_arduino"; //;  //localhost
-        public const string ApiWebSocketLocation = "https://arthurcam.com/api/arduino"; //"http://localhost:3777/api/arduino";//"https://arthurcam.com/api/arduino"; //   //set to ArthurCam.com
+        public const string WebSocketLocation = "ws://arthurcam.com:3777/ws_arduino"; //"ws://127.0.0.1:3777/ws_arduino";/
+        //public const string ApiWebSocketLocation = "https://arthurcam.com/api/arduino"; //"http://localhost:3777/api/arduino";//not in use in this version
         public const string WebSocketApprovalMessage = "desktopApplication";
         public const int ArduinoMaxInputSize = 18;
         public const string StringOutputValue = "9";
@@ -42,7 +42,7 @@ namespace SocketIOHandShake
 
         static void Main(string[] args)
         {
-            Console.WriteLine("ArthurCam.com Web, Connection + Arduino Connection:");
+            Console.WriteLine(WebSocketLocation + " Web Connection + Arduino Connection:");
             try
             {
                 using (myport = new SerialPort())
@@ -68,7 +68,7 @@ namespace SocketIOHandShake
                     Console.WriteLine("Please enter 1 from the web api to turn on the lamp:");
                     Console.WriteLine("Please leave the program running!");
                     Console.WriteLine("Sure the Arduino connected first!, selected port: " + myport.PortName);
-                    Console.WriteLine("check functionality with " + ApiWebSocketLocation);
+                    //Console.WriteLine("check functionality with " + ApiWebSocketLocation);
                     //ArduinoLed("0");
                     Console.ReadKey();  //fix
 
