@@ -24,10 +24,10 @@ finishLoaded(() => {
  
     setInterval(() => { //to fix
         if(video.paused)  {
-        video.currentTime +=  2; 
+        video.currentTime +=  1; 
         }//1.5
         //video.play();
-    }, 800);
+    }, 500);
 
     setInterval(() => { //to fix
         hls.startLoad(0);
