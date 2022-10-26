@@ -138,7 +138,6 @@
     <Text Include="WithString.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="IOTReadArduino with ssd1306.ino" />
     <None Include="proofOfConcept\SerialReadArduino1.ino" />
     <None Include="proofOfConcept\sh1106-display-MyDevelopment1.ino" />
     <None Include="proofOfConcept\z_ssd1306-display-DEMO.ino" />

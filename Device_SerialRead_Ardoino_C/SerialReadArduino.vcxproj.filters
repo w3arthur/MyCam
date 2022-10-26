@@ -22,7 +22,6 @@
     <None Include="proofOfConcept\z_ssd1306-display-MyDevelopment1.ino">
       <Filter>proofOfConcept</Filter>
     </None>
-    <None Include="IOTReadArduino with ssd1306.ino" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="proofOfConcept">

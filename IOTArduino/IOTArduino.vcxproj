@@ -128,6 +128,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="firstAttempt.ino" />
+    <None Include="IOT_ssd1306_Deploy.ino" />
+    <None Include="IOT_ssd1306_PCCheck.ino" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
