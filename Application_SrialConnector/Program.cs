@@ -32,7 +32,7 @@ namespace SocketIOHandShake
         public const int ArduinoMaxInputSize = 18;
         public const string StringOutputValue = "9";
         public const string SerialFirstConnectValue = "42";
-        public static readonly short[] LedList = { 1, 2 };  //only 1char, not include StringOutputValue
+        public static readonly short[] LedList = { 1, 2 };  //change to 7  //only 1char, not include StringOutputValue
         public const string PORT = "COM3";
 
         public static readonly string[] ports = SerialPort.GetPortNames();
@@ -43,7 +43,7 @@ namespace SocketIOHandShake
 
         static void Main(string[] args)
         {
-            Console.WriteLine(WebSocketLocation + " Web Connection + Arduino Connection:");
+            Console.WriteLine(DateTime.Now + " " + WebSocketLocation + " Web Connection + Arduino Connection:");
             try
             {
                 using (myport = new SerialPort())
@@ -70,10 +70,11 @@ namespace SocketIOHandShake
                     Console.WriteLine("Please leave the program running!");
                     Console.WriteLine("Sure the Arduino connected first!, selected port: " + myport.PortName);
                     //Console.WriteLine("check functionality with " + ApiWebSocketLocation);
-                    //ArduinoLed("0");
-                    Console.ReadKey();  //fix
-
-                    Main(new string[] { }); //maked a loop if key is pressed, check if fixed ...
+                    while (true)
+                    {
+                        Console.ReadKey();
+                        Console.WriteLine(DateTime.Now + " no reaction on pressed key");
+                    }   
                 }
             }
             catch (Exception ex)  { Console.Clear(); Console.WriteLine("! "+ex.Message); }
@@ -91,7 +92,7 @@ namespace SocketIOHandShake
         {
             try
             {  //"Received from the server " 
-                Console.WriteLine(e.Data);
+                Console.WriteLine(DateTime.Now + "Server WebSocket: " + e.Data);
                 ArduinoSerialPost(e.Data);
             }
             catch (Exception ex) { Console.WriteLine(ex.Message); }
@@ -104,7 +105,7 @@ namespace SocketIOHandShake
             try
             {
                 Console.WriteLine("get start to work with arduino");
-                myport.WriteLine(SerialFirstConnectValue);
+                myport!.WriteLine(SerialFirstConnectValue);
                 Console.WriteLine(myport.ReadLine());
                 Console.WriteLine(myport.ReadLine());
             }
@@ -142,8 +143,8 @@ namespace SocketIOHandShake
 
 
                 //Console.WriteLine(intTemp);
-                Console.WriteLine(myport.ReadLine());
-                Console.WriteLine(myport.ReadLine());
+                Console.WriteLine("Arduino Serial: " + myport.ReadLine());
+                Console.WriteLine("Arduino Serial: " + myport.ReadLine());
 
             }
             catch (Exception ex) { throw new Exception( "Arduino Issue, Please Reset the program, issue:" + ex.Message);  }
