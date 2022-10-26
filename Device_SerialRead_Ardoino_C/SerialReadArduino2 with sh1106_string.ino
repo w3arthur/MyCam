@@ -13,7 +13,7 @@
 #define RESET_STRING_ACTION "Your Text Here->"
 #define RESET_SERIAL_INPUT_VALUE 42
 #define STRING_SERIAL_INPUT_VALUE 9
-#define LED1 3
+#define LED1 7
 
 
 //U8GLIB_SH1106_128X64 u8g(U8G_I2C_OPT_NONE);  // I2C / TWI 
@@ -29,6 +29,7 @@ void draw(void) {
   //u8g.setFont(u8g_font_unifont);  // graphic commands to redraw the complete screen should be placed here  
   u8g.setFont(FONT_SIZE2);
   
+  u8g.drawStr( 14, 10, "Serial Port" );  
   u8g.drawStr( DISTANCE_LEFT, DISTANCE_TOP, userString.c_str());  
   u8g.setFont(FONT_SIZE1);
   u8g.drawStr( LOGO_DISTANCE_LEFT, LOGO_DISTANCE_TOP, "ArthurCam\0");  
@@ -45,7 +46,7 @@ void setup(void) {
   pinMode(LED1, OUTPUT);
   Serial.begin(9600);
   Serial.println("Waiting to true or 1 value... ");
-  // u8g.setRot180(); // flip screen, if required
+  u8g.setRot180(); // flip screen, if required
   //u8g.setHardwareBackup(u8g_backup_avr_spi);  // set SPI backup if required
   // assign default color value:
   if ( u8g.getMode() == U8G_MODE_R3G3B2 ) u8g.setColorIndex(255); // white

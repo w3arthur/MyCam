@@ -33,6 +33,7 @@ namespace SocketIOHandShake
         public const string StringOutputValue = "9";
         public const string SerialFirstConnectValue = "42";
         public static readonly short[] LedList = { 1, 2 };  //only 1char, not include StringOutputValue
+        public const string PORT = "COM3";
 
         public static readonly string[] ports = SerialPort.GetPortNames();
         public static WebSocket? ws;
@@ -50,7 +51,7 @@ namespace SocketIOHandShake
                 {
                     //Serial Port
                     myport.BaudRate = 9600;
-                    myport.PortName = ports[ports.Length - 1]; //myport.PortName = "COM3";  //Please fix!
+                    myport.PortName = PORT;// ports[ports.Length - 1]; //myport.PortName = "COM3";  //Please fix!
                     myport.Open();
 
                     //WebSocket
