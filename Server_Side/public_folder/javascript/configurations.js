@@ -32,7 +32,7 @@ let comments = getElement('comments');
 
 
 const configurations = {
-    apiUrl: 'http://localhost:3777' //'https://arthurcam.com'
+    apiUrl: 'https://arthurcam.com' //'http://localhost:3777'
     , videoSrc: 'https://arthurcam.com/tmp/hls/arthur.m3u8'
     , STRING_MAX_LENGTH: 18
     , COMMENT_MAX_LENGTH: 255
