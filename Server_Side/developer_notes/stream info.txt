@@ -2,6 +2,7 @@ use OBS Studio
 set stream to:
 
 rtmp://159.89.52.207:1935/live
+rtmp://arthurcam.com:1935/live
 rtmp://localhost:1935/live
 arthur?key=secretKey
 
@@ -10,3 +11,6 @@ rtmp://localhost:1935/live/arthur
 
 hls
 please recheck the address with available ports
+
+
+rtmp://159.89.52.207:1935/live/arthur
