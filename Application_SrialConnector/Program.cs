@@ -26,13 +26,13 @@ namespace SocketIOHandShake
     internal class Program
     {
 
-        public const string WebSocketLocation = "ws://arthurcam.com:3777/ws_arduino"; //"ws://127.0.0.1:3777/ws_arduino";/
+        public const string WebSocketLocation = "ws://127.0.0.1:3777/ws_arduino"; //"ws://arthurcam.com:3777/ws_arduino"; //"ws://127.0.0.1:3777/ws_arduino"; //
         //public const string ApiWebSocketLocation = "https://arthurcam.com/api/arduino"; //"http://localhost:3777/api/arduino";//not in use in this version
         public const string WebSocketApprovalMessage = "desktopApplication";
         public const int ArduinoMaxInputSize = 18;
         public const string StringOutputValue = "9";
         public const string SerialFirstConnectValue = "42";
-        public static readonly short[] LedList = { 1, 2 };  //change to 7  //only 1char, not include StringOutputValue
+        public static readonly short[] LedList = { 2, 7 };  //only 1char, not include StringOutputValue
         public const string PORT = "COM3";
 
         public static readonly string[] ports = SerialPort.GetPortNames();
@@ -62,9 +62,8 @@ namespace SocketIOHandShake
                     ws.OnMessage += Ws_OnMessage!; // += add new event handler
 
                     //Arduino Test      // fix: it cancels previous user entered string with "Your Text Here->" "Your Text Here<-"
-                    //ArduinoSerialPostFirstConnection();
-                    //ArduinoSerialPost("Your Text Here<-");
-
+                    ArduinoSerialPostFirstConnection();
+                    ArduinoSerialPost("Your Text Here<-");
 
                     Console.WriteLine("Please enter 1 from the web api to turn on the lamp:");
                     Console.WriteLine("Please leave the program running!");

@@ -1,6 +1,5 @@
 const arduinoIOTValueMaxLength = 10;
 const lastSentDisplayTextShow = 10;
-const apiIOTArduinoLedNumber = '7';
 
 //token access
 const iotTokenClientId = 'NU69UWvmi2vlL7c84DNtBcraQJ3DLAlr';
@@ -18,7 +17,6 @@ const property_id = '92c9383f-7420-4082-9a33-d10f9e26f9bc'; // {String} The id o
 module.exports = {
     arduinoIOTValueMaxLength
     , lastSentDisplayTextShow
-    , apiIOTArduinoLedNumber
     , iotArduinoToken
     , device_id
     , property_id

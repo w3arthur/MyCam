@@ -20,7 +20,7 @@ commentsRouter.route('/')  // /api/comments/
     .post(async (req, res) => { try{
         const {message} = req.body;
         let messageTrim = message;
-        if (messageTrim.length > ARDUINO_VALUE_MAX_LENGTH) messageTrim = messageTrim.substring(0, commentValueMaxLength);
+        if (messageTrim.length > commentValueMaxLength) messageTrim = messageTrim.substring(0, commentValueMaxLength);
         if (messageTrim.trim().length === 0) throw new Error();
         messageTrim = messageTrim.replaceAll('<', '&lt;');
         const data = {message: messageTrim};

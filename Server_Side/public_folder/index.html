@@ -9,7 +9,7 @@
   <link href="./index.css" rel="stylesheet">
   <script defer src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script defer src="./configurations.js?123"></script>
+  <script defer src="./javascript/configurations.js?123"></script>
   <script defer src="./javascript/video_stream.js?123"></script>
   <script defer src="./javascript/api_control.js?123"></script>
   <script defer src="./javascript/websocket_control.js?123"></script>
@@ -34,6 +34,14 @@
           <input type="button" onclick="document.getElementById('video').play();document.getElementById('video').currentTime +=  10000;" id="play" value="Play" class="btn btn-outline-primary btn-sm">
       </p>
   </section> 
+  <div class="frame" id="feedbackAreaText"></div>
+  <section class="frame">
+      <h3 class="frame"><label for="send_text">SEND DISPLAY TEXT</label></h3>
+      <p>
+          <input name="send_text" id="send_text" type="text" class="form-control" placeholder="type your text here" autocomplete="off">
+          <input id="send_text_button" type="button" value="Send Text" class="btn btn-outline-info btn-sm">  
+      </p>
+  </section>
   <div class="frame" id="feedbackAreaLight"></div>
   <section class="frame">
       <h3 class="frame"><label for="led">LIGHT TURN ON</label></h3>
@@ -45,22 +53,14 @@
           *possible delay 12sec, accept only English 18 characters <br>
       </p>
   </section>
-  <section class="frame">
-      <h3 class="frame"><label for="send_text_button">PREVIOUS DISPLAY TEXT</label></h3>
-      <p class="frame" id="displayedText">
-      </p>
-  </section>
   <p class="last_column_element"></p>
 </div><!--column end-->
 <div class="col-md-6">
   <section class="frame">
-      <h3 class="frame"><label for="send_text">SEND DISPLAY TEXT</label></h3>
-      <p>
-          <input name="send_text" id="send_text" type="text" class="form-control" placeholder="type your text here" autocomplete="off">
-          <input id="send_text_button" type="button" value="Send Text" class="btn btn-outline-info btn-sm">  
-      </p>
+    <h3 class="frame"><label for="send_text_button">PREVIOUS DISPLAY TEXT</label></h3>
+    <p class="frame" id="displayedText">
+    </p>
   </section>
-  <div class="frame" id="feedbackAreaText"></div>
   <section class="frame"> <!--recheck-->
       <h3 class="frame"><label for="reload">Stream Controls</label></h3>
       <p>
@@ -68,17 +68,17 @@
       </p>
   </section>
   <div class="frame">
-      <section class="frame">
-          <h3 class="frame"><label for="send_comment">COMMENTS</label></h3>
-          <p>
-              <input name="send_comment" id="send_comment" type="text" class="form-control" autocomplete="off">
-              <input type="button" id="send_comment_button" value="   ADD a comment   " class="btn btn-outline-primary btn-sm">
-          </p>
-      </section>
-      <section>
-          <h3 class="frame"><label for="send_comment_button">PREVIOUS COMMENTS</label></h3>
-          <p class="frame" id="comments"></p>
-      </section>
+    <section class="frame">
+        <h3 class="frame"><label for="send_comment">COMMENTS</label></h3>
+        <p>
+            <input name="send_comment" id="send_comment" type="text" class="form-control" autocomplete="off">
+            <input type="button" id="send_comment_button" value="   ADD a comment   " class="btn btn-outline-primary btn-sm">
+        </p>
+    </section>
+    <section>
+        <h3 class="frame"><label for="send_comment_button">PREVIOUS COMMENTS</label></h3>
+        <p class="frame" id="comments"></p>
+    </section>
   </div>
   <p class="last_column_element"></p>
 </div><!--column end-->

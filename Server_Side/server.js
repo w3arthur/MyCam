@@ -23,10 +23,11 @@ app.route("/test").get(async (req, res) => {
 });
 app.use("/api/rtmp_auth", rtmpAuthRouter);
 app.use("/api/arduinoSerial", arduinoSerialRouter);
-app.route("/api/comments", commentsRouter)
+app.use("/api/comments", commentsRouter)
+
 app.route("*").all((req, res) => res.status(404).send("fail " + req.path) );
 
 //websocket:
-wsServer1(server);  //ws explain examples https://stackoverflow.com/questions/22429744/how-to-setup-route-for-websocket-server-in-express
+wsServer1(server, app, '/ws_arduino');  //ws explain examples https://stackoverflow.com/questions/22429744/how-to-setup-route-for-websocket-server-in-express
 
 server.listen(PORT, () => console.log(`${(new Date().toISOString())} Server is listening on port ${PORT}, (Express + WS)`));

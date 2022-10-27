@@ -50,7 +50,7 @@ void setup() {
   /*
      The following function allows you to obtain more information
      related to the state of network and IoT Cloud connection and errors
-     the higher number the more granular information you’ll get.
+     the higher number the more granular information youâ€™ll get.
      The default is 0 (only errors).
      Maximum is 4
  */
@@ -58,16 +58,16 @@ void setup() {
   ArduinoCloud.printDebugInfo();
   
   
-  	if(!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) { Serial.println(F("SSD1306 allocation failed")); for(;;); }
-	display.setRotation(2);
-	delay(2000);
+    if(!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) { Serial.println(F("SSD1306 allocation failed")); for(;;); }
+  display.setRotation(2);
+  delay(2000);
   
-	display.clearDisplay();
-	display.setTextSize(FONT_SIZE2);
-	display.setTextColor(FONT_COLOR);
-	display.setCursor(DISTANCE_LEFT, DISTANCE_TOP);
-	display.println(str);// Display static text
-	display.display(); 
+  display.clearDisplay();
+  display.setTextSize(FONT_SIZE2);
+  display.setTextColor(FONT_COLOR);
+  display.setCursor(DISTANCE_LEFT, DISTANCE_TOP);
+  display.println(str);// Display static text
+  display.display(); 
   
   
 }
@@ -82,27 +82,27 @@ void loop() {
 
 
 void lcdDisply(){
-	display.clearDisplay();
-	display.setTextSize(2);
-	display.setCursor(7, 0);
-	display.println("IOT Server");
-	display.setTextSize(FONT_SIZE2);
-	display.setCursor(DISTANCE_LEFT, DISTANCE_TOP);
-	display.println(str);// Display static text
+  display.clearDisplay();
+  display.setTextSize(2);
+  display.setCursor(7, 0);
+  display.println("IOT Server");
+  display.setTextSize(FONT_SIZE2);
+  display.setCursor(DISTANCE_LEFT, DISTANCE_TOP);
+  display.println(str);// Display static text
 
-	display.setTextSize(FONT_SIZE1);
-	display.setCursor(LOGO_DISTANCE_LEFT, LOGO_DISTANCE_TOP);
-	display.println("ArthurCam");
-	display.setCursor(LOGO_DISTANCE_LEFT + 28, LOGO_DISTANCE_TOP + 8);
-	display.println(".com");
+  display.setTextSize(FONT_SIZE1);
+  display.setCursor(LOGO_DISTANCE_LEFT, LOGO_DISTANCE_TOP);
+  display.println("ArthurCam");
+  display.setCursor(LOGO_DISTANCE_LEFT + 28, LOGO_DISTANCE_TOP + 8);
+  display.println(".com");
 
-	display.setCursor(DISTANCE_LEFT, LOGO_DISTANCE_TOP);
-	display.println(i >= 10 ? String(i) : "0" + String(i) );
-	display.println("  sec");
-	i %= 59;
-	++i;
-	display.display(); 
-	delay(1000);
+  display.setCursor(DISTANCE_LEFT, LOGO_DISTANCE_TOP);
+  display.println(i >= 10 ? String(i) : "0" + String(i) );
+  display.println("  sec");
+  i %= 59;
+  ++i;
+  display.display(); 
+  delay(1000);
 }
 
 

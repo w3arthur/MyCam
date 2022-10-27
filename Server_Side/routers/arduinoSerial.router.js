@@ -1,7 +1,8 @@
 const config = require('../config');
-const {arduinoSerialValueMaxLength, lastSentDisplayTextShow, apiSerialArduinoLedNumber} = config.arduinoSerial;
+const {arduinoSerialValueMaxLength, lastSentDisplayTextShow} = config.arduinoSerial;
 const api = require('../api');
 const {express} = api.express;
+const {webSocketBroadcast} = api.webSocket;
 const arduinoSerialRouter = express.Router();
 const models = require('../models');
 const {DisplayTextModel} = models.messageModels;

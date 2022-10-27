@@ -1,44 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Image Include="SerialReadArduino.png">
-      <Filter>proofOfConcept</Filter>
-    </Image>
-    <Image Include="proofOfConcept\SerialReadArduino.png">
-      <Filter>proofOfConcept</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="SerialReadArduino2 with sh1106_string.ino" />
-    <None Include="proofOfConcept\SerialReadArduino1.ino">
-      <Filter>proofOfConcept</Filter>
-    </None>
-    <None Include="proofOfConcept\sh1106-display-MyDevelopment1.ino">
-      <Filter>proofOfConcept</Filter>
-    </None>
-    <None Include="proofOfConcept\z_ssd1306-display-DEMO.ino">
-      <Filter>proofOfConcept</Filter>
-    </None>
-    <None Include="proofOfConcept\z_ssd1306-display-MyDevelopment1.ino">
-      <Filter>proofOfConcept</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="proofOfConcept">
-      <UniqueIdentifier>{09f511bd-1f3a-439d-b0e0-0c099c9891d4}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="SerialReadArduino1.ino">
-      <Filter>proofOfConcept</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="WithString.txt">
-      <Filter>proofOfConcept</Filter>
-    </Text>
-    <Text Include="proofOfConcept\WithString.txt">
-      <Filter>proofOfConcept</Filter>
-    </Text>
+    <None Include="SerialReadArduino_with_sh1106_string.ino" />
   </ItemGroup>
 </Project>

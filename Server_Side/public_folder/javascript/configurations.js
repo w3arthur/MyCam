@@ -32,39 +32,49 @@ let comments = getElement('comments');
 
 
 const configurations = {
-    apiUrl: 'https://arthurcam.com' //'http://localhost:3777'//'https://arthurcam.com'
+    apiUrl: 'http://localhost:3777' //'https://arthurcam.com'
     , videoSrc: 'https://arthurcam.com/tmp/hls/arthur.m3u8'
     , STRING_MAX_LENGTH: 18
     , COMMENT_MAX_LENGTH: 255
     , FEEDBACK_SHOW_FOR_SEC: 90
     , DELAY_SEC: 15
-    , onload: () => {  feedbackAreaText('');feedbackAreaLight(''); send_text.focus(); }
-    , ledOnOff: () => Axios('GET', '/api/arduino/1', {}, {})
-    , lampOnOff: () => Axios('GET', '/api/arduino/2', {}, {})
-    , stringApi: (str) => Axios('GET', '/api/arduino/' + str, {}, {})
-    , stringsGetApi: () => Axios('GET', '/api/strings/', {}, {})
+    , RELOAD_PAGE_AFTER_DELAY_SEC: 2
+    , ledOnOff: () => Axios('POST', '/api/arduinoSerial/' + 7, {}, {})
+    , lampOnOff: () => Axios('POST', '/api/arduinoSerial/' + 2, {}, {})
+    , stringApi: (str) => Axios('POST', '/api/arduinoSerial/' + str, {}, {})
+    , stringsGetApi: () => Axios('GET', '/api/arduinoSerial/', {}, {})
     , commentPostApi: (str) => Axios('POST', '/api/comments/', {message: str}, {})
     , commentsGetApi: () => Axios('GET', '/api/comments/', {}, {})
     , 
 }
 
-finishLoaded(() => {
-    configurations.onload();
+finishLoaded(() => { //onload
+    feedbackAreaText('');feedbackAreaLight(''); /*send_text.focus();*/
 });
 
 
 
 //feedback area
-function feedbackArea(element ,str){
-    if(str === '') {element.textContent = ''; element.style.display = 'none';}
-    else {
+function feedbackArea(element ,str, color){
+    if(str === '') {    //api delay complete
+        element.textContent = '';
+        element.style.display = 'none';
+    } else {
         element.style.display = 'block';
+        element.className = color;
         element.textContent = str;
         setTimeout( () => { feedbackArea(element ,''); }, configurations.FEEDBACK_SHOW_FOR_SEC * 1000);
     };
 }
-function feedbackAreaLight(str){ feedbackArea(feedbackAreaLight_element ,str); }
-function feedbackAreaText(str){ feedbackArea(feedbackAreaText_element ,str); }
+//LED or Lamp
+function feedbackAreaLight(str, color = 'blue'){ feedbackArea(feedbackAreaLight_element ,str, color); }
+function feedbackAreaLightAlert(str){ feedbackAreaLight(str, 'red'); }
+function feedbackAreaLightSuccess(str){ feedbackAreaLight(str, 'green'); }
+
+//String TextArea
+function feedbackAreaText(str, color = 'blue'){ feedbackArea(feedbackAreaText_element ,str, color); }
+function feedbackAreaTextAlert(str){ feedbackAreaText(str, 'red'); }
+function feedbackAreaTextSuccess(str){ feedbackAreaText(str, 'green'); }
 
 //delay functions
 //add feedback area to delay
@@ -74,6 +84,7 @@ function delayButton(buttonId, callback){
     setTimeout( () => {
         buttonElement.disabled = false;
         callback();
+        setTimeout( () => { location.reload(); }, configurations.RELOAD_PAGE_AFTER_DELAY_SEC * 1000);
     }, configurations.DELAY_SEC * 1000);
 }
 
@@ -87,9 +98,9 @@ function delayText(buttonId, textFieldId, callback){
         textElement.disabled = false;
         textElement.value = '';
         callback();
+        setTimeout( () => { location.reload(); }, configurations.RELOAD_PAGE_AFTER_DELAY_SEC * 1000);
     }, configurations.DELAY_SEC * 1000);
 }
-
 
 
 //axios

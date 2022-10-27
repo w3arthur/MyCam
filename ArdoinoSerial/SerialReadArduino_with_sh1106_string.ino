@@ -14,7 +14,7 @@
 #define RESET_SERIAL_INPUT_VALUE 42
 #define STRING_SERIAL_INPUT_VALUE 9
 #define LED1 7
-
+#define LED1_VALUE 7
 
 //U8GLIB_SH1106_128X64 u8g(U8G_I2C_OPT_NONE);  // I2C / TWI 
 //U8GLIB_SH1106_128X64 u8g(U8G_I2C_OPT_DEV_0|U8G_I2C_OPT_FAST); // Dev 0, Fast I2C / TWI
@@ -71,7 +71,7 @@ void serialEvent()
 {
     while (!Serial.available());
     int action = Serial.parseInt();
-    if ( action == 1 ){ digitalWrite(LED1, !digitalRead(LED1)); Serial.println("ok");}
+    if ( action == LED1_VALUE ){ digitalWrite(LED1, !digitalRead(LED1)); Serial.println("ok");}
     else if ( action == STRING_SERIAL_INPUT_VALUE ){
         String diplayString = "";
         Serial.println("waiting for string, waiting set for (msec): " + String(TIME_DELAY_FOR_STRING_INPUT));
@@ -110,4 +110,3 @@ void u8g_prepare(void) {
   u8g.setDefaultForegroundColor();
   u8g.setFontPosTop();
 }
-

@@ -18,6 +18,9 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="SerialReadArduino_with_sh1106_string.ino" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -126,24 +129,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="SerialReadArduino1.ino" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="proofOfConcept\SerialReadArduino.png" />
-    <Image Include="SerialReadArduino.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="proofOfConcept\WithString.txt" />
-    <Text Include="WithString.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="proofOfConcept\SerialReadArduino1.ino" />
-    <None Include="proofOfConcept\sh1106-display-MyDevelopment1.ino" />
-    <None Include="proofOfConcept\z_ssd1306-display-DEMO.ino" />
-    <None Include="proofOfConcept\z_ssd1306-display-MyDevelopment1.ino" />
-    <None Include="SerialReadArduino2 with sh1106_string.ino" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
