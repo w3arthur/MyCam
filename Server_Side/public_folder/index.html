@@ -34,34 +34,34 @@
 <!-- 
           <video id="video" style="background-color: rgb(255, 255, 255);width: 100%"></video>
           <input type="button" onclick="document.getElementById('video').play();document.getElementById('video').currentTime +=  10000;" id="play" value="Play" class="btn btn-outline-primary btn-sm"> -->
-          <iframe id="youtube" width="560" height="315" src="https://www.youtube.com/embed/-1kdqWbvisQ?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe id="youtube" width="100%" height="auto" style="aspect-ratio: 16/9;width: 100%; min-height: 170px;max-height: 315px;"src="https://www.youtube.com/embed/-1kdqWbvisQ?autoplay=1&mute=1&fs=0&color=white" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
 
       </p>
   </section> 
   <div class="frame" id="feedbackAreaText"></div>
   <section class="frame">
-      <h3 class="frame"><label for="send_text">SEND DISPLAY TEXT</label></h3>
+      <h3 class="frame"><label for="send_text">SEND DISPLAY TEXT, serial device</label></h3>
       <p>
-          <input name="send_text" id="send_text" type="text" class="form-control" placeholder="type your text here" autocomplete="off">
+          <input maxlength="18" name="send_text" id="send_text" type="text" class="form-control" placeholder="type your text here for display" autocomplete="off">
           <input id="send_text_button" type="button" value="Send Text" class="btn btn-outline-info btn-sm">  
       </p>
   </section>
   <div class="frame" id="feedbackAreaLight"></div>
   <section class="frame">
-      <h3 class="frame"><label for="led">LIGHT TURN ON</label></h3>
+      <h3 class="frame"><label for="led">LIGHT TURN ON, serial device</label></h3>
       <p class="frame">
           <input id="led" type="button" value="LED On/Off" class="btn btn-outline-info btn-sm">
           <input id="lamp" disabled type="button" value="Lamp On/Off" class="btn btn-outline-info btn-sm">
           <br>
-          Current Visitors # - <br>
-          *possible delay 12sec, accept only English 18 characters <br>
+          <!-- Current Visitors # - <br> -->
+          *possible delay 10sec, accept only English 18 characters <br>
       </p>
   </section>
   <p class="last_column_element"></p>
 </div><!--column end-->
 <div class="col-md-6">
   <section class="frame">
-    <h3 class="frame"><label for="send_text_button">PREVIOUS DISPLAY TEXT</label></h3>
+    <h3 class="frame"><label for="send_text_button">PREVIOUS DISPLAY TEXT, serial device</label></h3>
     <p class="frame" id="displayedText">
     </p>
   </section>
@@ -73,14 +73,14 @@
   </section>
   <div class="frame">
     <section class="frame">
-        <h3 class="frame"><label for="send_comment">COMMENTS</label></h3>
+        <h3 class="frame"><label for="send_comment">COMMENTS, what to improve</label></h3>
         <p>
-            <input name="send_comment" id="send_comment" type="text" class="form-control" autocomplete="off">
+            <input maxlength="255" placeholder="type your comment about this app" name="send_comment" id="send_comment" type="text" class="form-control" autocomplete="off">
             <input type="button" id="send_comment_button" value="   ADD a comment   " class="btn btn-outline-primary btn-sm">
         </p>
     </section>
     <section>
-        <h3 class="frame"><label for="send_comment_button">PREVIOUS COMMENTS</label></h3>
+        <h3 class="frame"><label for="send_comment_button">PREVIOUS COMMENTS, what to improve</label></h3>
         <p class="frame" id="comments"></p>
     </section>
   </div>
