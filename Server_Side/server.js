@@ -5,7 +5,7 @@ const api = require('./api');
 const {getLocalFile} = api.localFiles;
 const {app, express, server} = api.express;
 const routers  = require('./routers');
-const {rtmpAuthRouter, arduinoSerialRouter, commentsRouter} = routers;
+const {rtmpAuthRouter, arduinoSerialRouter, arduinoIOTRouter, commentsRouter} = routers;
 const {wsServer1}  = require('./sockets');
 
 //middleware:
@@ -23,7 +23,8 @@ app.route("/test").get(async (req, res) => {
 });
 app.use("/api/rtmp_auth", rtmpAuthRouter);
 app.use("/api/arduinoSerial", arduinoSerialRouter);
-app.use("/api/comments", commentsRouter)
+app.use("/api/arduinoIOT", arduinoIOTRouter);
+app.use("/api/comments", commentsRouter);
 
 app.route("*").all((req, res) => res.status(404).send("fail " + req.path) );
 

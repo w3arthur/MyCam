@@ -9,12 +9,10 @@
   <link href="./index.css" rel="stylesheet">
   <script defer src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script defer src="./javascript/configurations.js?123"></script>
-  <script defer src="./javascript/video_stream.js?123"></script>
-  <script defer src="./javascript/api_control.js?123"></script>
-  <script defer src="./javascript/websocket_control.js?123"></script>
-  <!-- Inside Localhost, please run it on "Live Server (port 5500)" With "Access-Control-Alow-Origin" - On //-->
+  <!-- additional module scripts will set in the end of the page -->
 </head><body><div class="pre_container"><div class="container">
+
+
 <div class="sub_container">
 <header class="row header" style="margin: 2px"> <!--header-->
   <section class="col">
@@ -30,12 +28,9 @@
   <section class="frame" style="text-align: center;">
       <h3 class="frame"><label for="reload">STREAM</label></h3>
       <p>
-
-<!-- 
-          <video id="video" style="background-color: rgb(255, 255, 255);width: 100%"></video>
+          <!-- <video id="video" style="background-color: rgb(255, 255, 255);width: 100%"></video>
           <input type="button" onclick="document.getElementById('video').play();document.getElementById('video').currentTime +=  10000;" id="play" value="Play" class="btn btn-outline-primary btn-sm"> -->
-          <iframe id="youtube" width="100%" height="auto" style="aspect-ratio: 16/9;width: 100%; min-height: 170px;max-height: 315px;"src="https://www.youtube.com/embed/-1kdqWbvisQ?widget_referrer=arthurcam.com&autoplay=1&mute=1&fs=0&color=white&iv_load_policy=3&enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-
+          <iframe id="youtube" width="100%" height="auto" style="aspect-ratio: 16/9;width: 100%; min-height: 170px;max-height: 315px;"src="https://www.youtube.com/embed/-1kdqWbvisQ?widget_referrer=arthurcam.com&autoplay=1&mute=1&fs=0&color=white&iv_load_policy=3&enablejsapi=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
       </p>
   </section> 
   <div class="frame" id="feedbackAreaText"></div>
@@ -107,6 +102,9 @@
 
 </div></footer><!--end footer-->
 </div></div>
+
+
+ <script type="module" src="./javascript/htmlEvents.js"></script>
 
 
 </body></html>

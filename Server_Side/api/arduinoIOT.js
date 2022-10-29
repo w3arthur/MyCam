@@ -28,7 +28,7 @@ const getDevicesInfo = async() => {
 }
 
 
-const setTextMessage = async(strMessage) => {
+const setTextArduinoIOTMessage = async(strMessage) => {
     const api = new IotApi.PropertiesV2Api(client)
     const property_value = { value: strMessage }; // {PropertyValue} 
     api.propertiesV2Publish(device_id, property_id, property_value).then(function(data) {
@@ -38,3 +38,9 @@ const setTextMessage = async(strMessage) => {
         console.error(error);
     });
 }
+
+
+
+module.exports = { 
+    getDevicesInfo, setTextArduinoIOTMessage
+};

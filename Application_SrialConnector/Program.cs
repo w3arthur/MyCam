@@ -23,7 +23,7 @@ using static System.Net.WebRequestMethods;
 
 namespace SocketIOHandShake
 {
-    internal class Program
+    public class Program
     {
 
         public const string WebSocketLocation = "ws://arthurcam.com:3777/ws_arduino"; //"ws://127.0.0.1:3777/ws_arduino"; //
@@ -39,21 +39,29 @@ namespace SocketIOHandShake
         public static WebSocket? ws;
         public static SerialPort? myport;
 
-        //public static CancellationTokenSource sourceToken = new CancellationTokenSource();
+        public static CancellationTokenSource sourceToken = new CancellationTokenSource();
+
+        public static int RetryCount = 1;
+        public static void retry()  // fix the delay issue
+        {
+            sourceToken.Cancel();
+            if( !(myport is null)  && myport.IsOpen) myport.Close();
+            sourceToken = new CancellationTokenSource();
+            Thread.Sleep(1000 * RetryCount);
+            Console.WriteLine(DateTime.Now + "Retry... " + RetryCount );
+            RetryCount ++;
+            Main(new string[] { });
+        }
 
         static void Main(string[] args)
         {
+            sourceToken.Token.ThrowIfCancellationRequested();
             Console.WriteLine(DateTime.Now + " " + WebSocketLocation + " Web Connection + Arduino Connection:");
             try
             {
                 using (myport = new SerialPort())
                 using (ws = new WebSocket(WebSocketLocation))
                 {
-                    //Serial Port
-                    myport.BaudRate = 9600;
-                    myport.PortName = PORT;// ports[ports.Length - 1]; //myport.PortName = "COM3";  //Please fix!
-                    myport.Open();
-
                     //WebSocket
                     ws.OnClose += Ws_OnClose; ;
                     ws.Connect();  //mess on error
@@ -61,7 +69,12 @@ namespace SocketIOHandShake
                     ws.Send(WebSocketApprovalMessage);
                     ws.OnMessage += Ws_OnMessage!; // += add new event handler
 
-                    //Arduino Test      // fix: it cancels previous user entered string with "Your Text Here->" "Your Text Here<-"
+                    //Serial Port
+                    myport.BaudRate = 9600;
+                    myport.PortName = PORT;// ports[ports.Length - 1]; //myport.PortName = "COM3";  //Please fix!
+                    myport.Open();
+
+                    //Arduino Test port      // fix: it cancels previous user entered string with "Your Text Here->" "Your Text Here<-"
                     ArduinoSerialPostFirstConnection();
                     ArduinoSerialPost("Your Text Here<-");
 
@@ -76,7 +89,7 @@ namespace SocketIOHandShake
                     }   
                 }
             }
-            catch (Exception ex)  { Console.Clear(); Console.WriteLine("! "+ex.Message); }
+            catch (Exception ex)  { Console.Clear(); Console.WriteLine("! "+ex.Message); retry(); }
 
         }
         ~Program() { /*ws?.Close(); myport?.Dispose();*/}
@@ -84,7 +97,7 @@ namespace SocketIOHandShake
         private static void Ws_OnClose(object? sender, CloseEventArgs e)
         { //message on error
             Console.Clear();   
-            if (!(ws?.Ping() ?? false)) { Console.WriteLine("There is websocket server issue, selected server: " + WebSocketLocation);}
+            if (!(ws?.Ping() ?? false)) { Console.WriteLine("There is websocket server issue, selected server: " + WebSocketLocation); retry(); }
         }
 
         private static void Ws_OnMessage(object sender, MessageEventArgs e)
