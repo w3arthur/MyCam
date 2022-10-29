@@ -1,5 +1,5 @@
 const config = require('../config');
-const {iotArduinoToken, device_id, property_id} = config.arduinoIOT
+const {iotArduinoToken, device_id, property_id} = config.arduinoIOT;
 
 const IotApi = require('@arduino/arduino-iot-client');
 const rp = require('request-promise');
@@ -29,6 +29,7 @@ const getDevicesInfo = async() => {
 
 
 const setTextArduinoIOTMessage = async(strMessage) => {
+    const client = await getClient();
     const api = new IotApi.PropertiesV2Api(client)
     const property_value = { value: strMessage }; // {PropertyValue} 
     api.propertiesV2Publish(device_id, property_id, property_value).then(function(data) {

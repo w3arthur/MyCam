@@ -1,4 +1,4 @@
-const arduinoIOTValueMaxLength = 10;
+const arduinoIOTValueMaxLength = 12;
 const lastSentDisplayTextShow = 10;
 
 //token access
