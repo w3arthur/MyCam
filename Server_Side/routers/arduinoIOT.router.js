@@ -10,7 +10,7 @@ const {IOTTextModel} = models.messageModels;
 arduinoIOTRouter.route('/:param')  // /api/arduinoIOT/____ //send arduino IOT string or number
     .all(async (req, res) => { try{
         const {param} = req.params;
-        if (param.length > arduinoSerialValueMaxLength) param = param.substring(0, arduinoIOTValueMaxLength);
+        if (param.length > arduinoIOTValueMaxLength) param = param.substring(0, arduinoIOTValueMaxLength);
         if (param.trim().length === 0) throw new Error();
         try{ await setTextArduinoIOTMessage(param); }
         catch(e){ console.log('Arduino IOT requested ' + (result ? 'sent' : 'not sent!')); throw new Error(); }
