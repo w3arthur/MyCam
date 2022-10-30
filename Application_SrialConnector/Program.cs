@@ -26,7 +26,7 @@ namespace SocketIOHandShake
     public class Program
     {
 
-        public const string WebSocketLocation = "ws://127.0.0.1:3777/ws_arduino"; //"ws://arthurcam.com:3777/ws_arduino"; //
+        public const string WebSocketLocation = "ws://arthurcam.com:3777/ws_arduino"; //"ws://127.0.0.1:3777/ws_arduino"; //
         //public const string ApiWebSocketLocation = "https://arthurcam.com/api/arduino"; //"http://localhost:3777/api/arduino";//not in use in this version
         public const string WebSocketApprovalMessage = "desktopApplication";
         public const int ArduinoMaxInputSize = 18;
@@ -55,13 +55,14 @@ namespace SocketIOHandShake
 
         static void Main(string[] args)
         {
-            sourceToken.Token.ThrowIfCancellationRequested();
+           // sourceToken.Token.ThrowIfCancellationRequested();
             Console.WriteLine(DateTime.Now + " " + WebSocketLocation + " Web Connection + Arduino Connection:");
             try
             {
                 using (myport = new SerialPort())
                 using (ws = new WebSocket(WebSocketLocation))
                 {
+
                     //WebSocket
                     ws.OnClose += Ws_OnClose; ;
                     ws.Connect();  //mess on error
@@ -70,9 +71,11 @@ namespace SocketIOHandShake
                     ws.OnMessage += Ws_OnMessage!; // += add new event handler
 
                     //Serial Port
+                    Console.WriteLine("Ports awailable:" + ports[ports.Length - 1]);
                     myport.BaudRate = 9600;
-                    myport.PortName = PORT;// ports[ports.Length - 1]; //myport.PortName = "COM3";  //Please fix!
+                    myport.PortName = PORT;//  //myport.PortName = "COM3";  //Please fix!
                     myport.Open();
+
 
                     //Arduino Test port      // fix: it cancels previous user entered string with "Your Text Here->" "Your Text Here<-"
                     ArduinoSerialPostFirstConnection();
