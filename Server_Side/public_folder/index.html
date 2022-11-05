@@ -32,7 +32,9 @@
           <input type="button" onclick="document.getElementById('video').play();document.getElementById('video').currentTime +=  10000;" id="play" value="Play" class="btn btn-outline-primary btn-sm"> -->
           <iframe id="youtube" width="100%" height="auto" style="aspect-ratio: 16/9;width: 100%; min-height: 170px;max-height: 315px;"src="https://www.youtube.com/embed/VJwhvYDC3LY?widget_referrer=arthurcam.com&autoplay=1&mute=1&fs=0&color=white&iv_load_policy=3&enablejsapi=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
       </p>
-  </section> 
+  </section>
+
+  <!--
   <div class="frame" id="feedbackAreaText"></div>
   <section class="frame">
       <h3 class="frame"><label for="send_text">SEND DISPLAY TEXT, Serial device</label></h3>
@@ -48,15 +50,11 @@
           <input id="led" type="button" value="  LED On/Off  " class="btn btn-outline-info btn-sm">
           <input id="lamp" disabled type="button" value="  Lamp On/Off  " class="btn btn-outline-info btn-sm">
           <br>
-          <!-- Current Visitors # - <br> -->
           *possible delay 18sec, accept only English 18 characters for Serial device, and 10 for IOT device <br>
       </p>
   </section>
-  <p class="last_column_element"></p>
-</div><!--column end-->
+-->
 
-
-<div class="col-md-6">
   <div class="frame" id="feedbackAreaIOTText"></div>
   <section class="frame">
     <h3 class="frame"><label for="send_iot_text">SEND DISPLAY TEXT, IOT device</label></h3>
@@ -66,14 +64,25 @@
     </p>
   </section>
   <section class="frame">
-    <h3 class="frame"><label for="send__iot_text_button">PREVIOUS DISPLAY TEXT, serial device</label></h3>
+    <h3 class="frame"><label for="send__iot_text_button">PREVIOUS DISPLAY TEXT, IOT device</label></h3>
     <p class="frame" id="displayedIOTText"></p>
   </section>
+
+
+
+  <p class="last_column_element"></p>
+</div><!--column end-->
+
+
+<div class="col-md-6">
+
+  <!--
   <section class="frame">
     <h3 class="frame"><label for="send_text_button">PREVIOUS DISPLAY TEXT, serial device</label></h3>
     <p class="frame" id="displayedText"></p>
   </section>
-  <section class="frame"> <!--recheck-->
+  -->
+  <section class="frame">
       <h3 class="frame"><label for="reload">Stream Controls</label></h3>
       <p>
           <input type="button" id="reload" value="   Page Reload   " class="btn btn-outline-primary btn-sm">
