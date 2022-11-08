@@ -12,12 +12,16 @@ const iotArduinoToken = {
 };
 //control
 const device_id = "c089bb7d-f067-45dc-9213-765015344c93"; // {String} The id of the thing
-const property_id = '92c9383f-7420-4082-9a33-d10f9e26f9bc'; // {String} The id of the property
+const property_id_string = '92c9383f-7420-4082-9a33-d10f9e26f9bc'; // {String} The id of the property
+const property_id_lamp = '3e25914d-4cac-4538-82bf-ae12a1c0995b'; // {String} The id of the property
+const property_id_led = '21370988-90ad-4c0e-aac4-0c1d9ae521f8'; // {String} The id of the property
 
 module.exports = {
     arduinoIOTValueMaxLength
     , lastSentDisplayTextShow
     , iotArduinoToken
     , device_id
-    , property_id
+    , property_id_string
+    , property_id_lamp
+    , property_id_led
 };

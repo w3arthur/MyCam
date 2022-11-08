@@ -11,6 +11,7 @@ finishLoaded(() => {//global page event functions
     feedbackAreaText('');   //reset value
     feedbackAreaLight('');   //reset value
     feedbackAreaIOTText('');   //reset value
+    feedbackAreaIOTLight('');   //reset value
     feedbackAreaComment('');   //reset value
     //send_text.focus();
     callStringsGetApi();
@@ -56,6 +57,22 @@ finishLoaded(() => {//global page event functions
             .BadResult( (errorMsg) => { feedbackAreaIOTText('Cant send the string', colors.fail); } )
             .Builder();
         });
+    if(tags.led_iot)
+        clickEvent(tags.led_iot, () => {
+            new AxiosRequest(() => configurations.ledIOTOnOff())
+            .GoodResult( (resultData) => { feedbackAreaIOTLight('Waiting, sending the led action'); delayButton(tags.led_iot, () => feedbackAreaIOTLight('The request sent', colors.success)); } )
+            .BadResult( (errorMsg) => { feedbackAreaIOTLight('Cant send the led action', colors.fail); } )
+            .Builder();
+        });
+
+    if(tags.lamp_iot)
+        clickEvent(tags.lamp_iot, () => {
+            new AxiosRequest(() => configurations.lampIOTOnOff())
+            .GoodResult( (resultData) => { feedbackAreaIOTLight('Waiting, sending the lamp action'); delayButton(tags.lamp_iot, () => feedbackAreaIOTLight('The request sent', colors.success)); } )
+            .BadResult( (errorMsg) => { feedbackAreaIOTLight('Cant send the lamp action', colors.fail); } )
+            .Builder();
+        });
+
     if(tags.led)
         clickEvent(tags.led, () => {
             new AxiosRequest(() => configurations.ledOnOff())
@@ -90,7 +107,7 @@ finishLoaded(() => {//global page event functions
 });
 
 
-//LED or Lamp
+//LED or Lamp Serial
 function feedbackAreaLight(str, color = colors.process){
     if(tags.feedbackAreaLight_element)
         feedbackArea(tags.feedbackAreaLight_element ,str, color); 
@@ -107,6 +124,12 @@ function feedbackAreaText(str, color = colors.process){
 function feedbackAreaComment(str, color = colors.process){
     if(tags.feedbackAreaComment_element)
         feedbackArea(tags.feedbackAreaComment_element ,str, color); 
+}
+
+//LED or Lamp IOT
+function feedbackAreaIOTLight(str, color = colors.process){
+    if(tags.feedbackAreaIOTLight_element)
+        feedbackArea(tags.feedbackAreaIOTLight_element ,str, color); 
 }
 
 //String IOT TextArea

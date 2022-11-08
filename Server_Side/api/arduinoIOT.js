@@ -1,8 +1,11 @@
 const config = require('../config');
-const {iotArduinoToken, device_id, property_id} = config.arduinoIOT;
+const {iotArduinoToken, device_id, property_id_string, property_id_lamp, property_id_led} = config.arduinoIOT;
 
 const IotApi = require('@arduino/arduino-iot-client');
 const rp = require('request-promise');
+
+
+//devicesV2
 
 const getToken = async() => { try {
     const response = await rp(iotArduinoToken);
@@ -27,12 +30,12 @@ const getDevicesInfo = async() => {
     });
 }
 
-
-const setTextArduinoIOTMessage = async(strMessage) => {
+//propertiesV2Publish
+const apiPut = async(propertyId, value) => {
     const client = await getClient();
     const api = new IotApi.PropertiesV2Api(client)
-    const property_value = { value: strMessage }; // {PropertyValue} 
-    api.propertiesV2Publish(device_id, property_id, property_value).then(function(data) {
+    const property_value = { value: value }; // {PropertyValue} 
+    api.propertiesV2Publish(device_id, propertyId, property_value).then(function(data) {
       console.log('arduino IOT issue, API called successfully.');     //set with map
     }, function(error) {
         console.error('arduino IOT issue, calling API');
@@ -41,7 +44,20 @@ const setTextArduinoIOTMessage = async(strMessage) => {
 }
 
 
+const setTextArduinoIOTMessage = async(strMessage) => {
+    await apiPut(property_id_string, strMessage);
+}
+
+const setLamp = async() => {
+    await apiPut(property_id_lamp, false);
+}
+
+const setLed = async() => {
+    await apiPut(property_id_led, false);
+}
+
+
 
 module.exports = { 
-    getDevicesInfo, setTextArduinoIOTMessage
+    getDevicesInfo, setTextArduinoIOTMessage, setLamp, setLed
 };

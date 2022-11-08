@@ -7,6 +7,8 @@
   The following variables are automatically generated and updated when changes are made to the Thing
 
   String iotString;
+  bool iotLamp;
+  bool iotLed;
 
   Variables which are marked as READ/WRITE in the Cloud Thing will also have functions
   which are called when their values are changed from the Dashboard.
@@ -34,10 +36,25 @@
 // On an arduino LEONARDO:   2(SDA),  3(SCL)
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
+#define LED1_VALUE 6
+#define LED2_VALUE 7
+#define LAMP_VALUE 1
+
 int i = 0;
-String str = "Send Here";
+String str = "Iot Text";
+bool isLedPlay = false;
+
+void ledPlay(){
+          digitalWrite(LED1_VALUE, !digitalRead(LED1_VALUE)); 
+          digitalWrite(LED2_VALUE, !digitalRead(LED1_VALUE)); 
+          delay(1000);
+}
+
 
 void setup() {
+  pinMode(LED1_VALUE, OUTPUT);
+  pinMode(LED2_VALUE, OUTPUT);
+  pinMode(LAMP_VALUE, OUTPUT);
   // Initialize serial and wait for port to open:
   Serial.begin(9600);
   // This delay gives the chance to wait for a Serial Monitor without blocking if none is found
@@ -58,16 +75,16 @@ void setup() {
   ArduinoCloud.printDebugInfo();
   
   
-    if(!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) { Serial.println(F("SSD1306 allocation failed")); for(;;); }
-  display.setRotation(2);
-  delay(2000);
+  	if(!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) { Serial.println(F("SSD1306 allocation failed")); for(;;); }
+	display.setRotation(2);
+	delay(2000);
   
-  display.clearDisplay();
-  display.setTextSize(FONT_SIZE2);
-  display.setTextColor(FONT_COLOR);
-  display.setCursor(DISTANCE_LEFT, DISTANCE_TOP);
-  display.println(str);// Display static text
-  display.display(); 
+	display.clearDisplay();
+	display.setTextSize(FONT_SIZE2);
+	display.setTextColor(FONT_COLOR);
+	display.setCursor(DISTANCE_LEFT, DISTANCE_TOP);
+	display.println(str);// Display static text
+	display.display(); 
   
   
 }
@@ -75,34 +92,35 @@ void setup() {
 void loop() {
   ArduinoCloud.update();
   // Your code here 
+  i = ( millis() / 1000 ) % 60;
   
   lcdDisply();
+  if(isLedPlay) ledPlay();
+  else delay(1000);
 }
 
 
 
 void lcdDisply(){
-  display.clearDisplay();
-  display.setTextSize(2);
-  display.setCursor(7, 0);
-  display.println("IOT Server");
-  display.setTextSize(FONT_SIZE2);
-  display.setCursor(DISTANCE_LEFT, DISTANCE_TOP);
-  display.println(str);// Display static text
+	display.clearDisplay();
+	display.setTextSize(2);
+	display.setCursor(7, 0);
+	display.println("IOT Server");
+	display.setTextSize(FONT_SIZE2);
+	display.setCursor(DISTANCE_LEFT, DISTANCE_TOP);
+	display.println(str);// Display static text
 
-  display.setTextSize(FONT_SIZE1);
-  display.setCursor(LOGO_DISTANCE_LEFT, LOGO_DISTANCE_TOP);
-  display.println("ArthurCam");
-  display.setCursor(LOGO_DISTANCE_LEFT + 28, LOGO_DISTANCE_TOP + 8);
-  display.println(".com");
+	display.setTextSize(FONT_SIZE1);
+	display.setCursor(LOGO_DISTANCE_LEFT, LOGO_DISTANCE_TOP);
+	display.println("ArthurCam");
+	display.setCursor(LOGO_DISTANCE_LEFT + 28, LOGO_DISTANCE_TOP + 8);
+	display.println(".com");
 
-  display.setCursor(DISTANCE_LEFT, LOGO_DISTANCE_TOP);
-  display.println(i >= 10 ? String(i) : "0" + String(i) );
-  display.println("  sec");
-  i %= 59;
-  ++i;
-  display.display(); 
-  delay(1000);
+	display.setCursor(DISTANCE_LEFT, LOGO_DISTANCE_TOP);
+	
+	display.println(i >= 10 ? String(i) : "0" + String(i) );
+	display.println("  sec");
+	display.display(); 
 }
 
 
@@ -114,4 +132,26 @@ void lcdDisply(){
 void onIotStringChange()  {
     str = iotString;
   // Add your code here to act upon IotString change
+}
+
+/*
+  Since IotLamp is READ_WRITE variable, onIotLampChange() is
+  executed every time a new value is received from IoT Cloud.
+*/
+void onIotLampChange()  {
+  digitalWrite(LAMP_VALUE, !digitalRead(LAMP_VALUE));
+  // Add your code here to act upon IotLamp change
+}
+
+/*
+  Since IotLed is READ_WRITE variable, onIotLedChange() is
+  executed every time a new value is received from IoT Cloud.
+*/
+void onIotLedChange()  {
+      isLedPlay = !isLedPlay;
+      if(!isLedPlay){
+        digitalWrite(LED1_VALUE, LOW); 
+        digitalWrite(LED2_VALUE, LOW); 
+      }
+  // Add your code here to act upon IotLed change
 }
