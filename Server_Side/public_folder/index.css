@@ -1,7 +1,7 @@
 body{ background-image: url('./images/ArthurCam-background.jpg'); background-repeat: no-repeat; background-size: 100% 100%; }
 p{ margin: 0px}
 h3{ font-size: 120%; }
-.pre_container{ opacity: 1; min-height: 100vh; background-color: rgba(113, 160, 167, 0.615); }
+.pre_container{ opacity: 1; min-height: 100vh; background-color: rgba(209, 244, 249, 0.615); }
 .container{ min-height: 100vh; opacity: 1; background-color: rgba(68, 124, 130, 0.493); border-radius: 5px; }
 .sub_container{ min-height: 90vh; }
 
