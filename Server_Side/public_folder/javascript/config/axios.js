@@ -5,9 +5,9 @@ export const configurations = {
     , STRING_MAX_LENGTH: 18
     , STRING_IOT_MAX_LENGTH: 10
     , COMMENT_MAX_LENGTH: 255
-    , FEEDBACK_SHOW_FOR_SEC: 90
-    , DELAY_SEC: 18
-    , RELOAD_PAGE_AFTER_DELAY_SEC: 3
+    , FEEDBACK_SHOW_FOR_SEC: 40
+    , DELAY_SEC: 8
+    , RELOAD_PAGE_AFTER_DELAY_SEC: 0     //: 0 , don't reload
     , ledOnOff: () => Axios('POST', '/api/arduinoSerial/' + 7, {}, {})
     , lampOnOff: () => Axios('POST', '/api/arduinoSerial/' + 2, {}, {})
     , stringSendApi: (str) => Axios('POST', '/api/arduinoSerial/' + str, {}, {})

@@ -22,7 +22,8 @@ export function delayButton(buttonId, callback){
     setTimeout( () => {
         buttonElement.disabled = false;
         callback();
-        setTimeout( () => { location.reload(); }, configurations.RELOAD_PAGE_AFTER_DELAY_SEC * 1000);
+        if(configurations.RELOAD_PAGE_AFTER_DELAY_SEC != 0) //don't reload
+            setTimeout( () => { location.reload(); }, configurations.RELOAD_PAGE_AFTER_DELAY_SEC * 1000);
     }, configurations.DELAY_SEC * 1000);
 }
 
@@ -36,7 +37,8 @@ export function delayText(buttonId, textFieldId, callback){
         textElement.disabled = false;
         textElement.value = '';
         callback();
-        setTimeout( () => { location.reload(); }, configurations.RELOAD_PAGE_AFTER_DELAY_SEC * 1000);
+        if(configurations.RELOAD_PAGE_AFTER_DELAY_SEC != 0) //don't reload
+            setTimeout( () => { location.reload(); }, configurations.RELOAD_PAGE_AFTER_DELAY_SEC * 1000);
     }, configurations.DELAY_SEC * 1000);
 }
 
