@@ -1,0 +1,9 @@
+
+
+my site
+rtmp://arthurcam.com:1935/live
+arthur?key=secretKey
+
+
+youtube
+*credentials given by youtube
