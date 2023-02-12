@@ -25,14 +25,14 @@ namespace SocketIOHandShake
 {
     public class Program
     {
-        public const string WebSocketLocation = "ws://127.0.0.1:3777/ws_arduino"; //"ws://arthurcam.com:3777/ws_arduino"; //
-        //public const string ApiWebSocketLocation = "https://arthurcam.com/api/arduino"; //"http://localhost:3777/api/arduino";//not in use in this version
+        public const string WebSocketLocation = "ws://144.126.209.94:3777/ws_arduino";//"ws://127.0.0.1:3777/ws_arduino"; //"ws://arthurcam.com:3777/ws_arduino"; //
+        //public const string ApiWebSocketLocation = "http://localhost:3777/api/arduino";//"https://arthurcam.com/api/arduino"; //"http://localhost:3777/api/arduino";//not in use in this version
         public const string WebSocketApprovalMessage = "desktopApplication";
         public const int ArduinoMaxInputSize = 18;
         public const string StringOutputValue = "9";
         public const string SerialFirstConnectValue = "42";
         public static readonly short[] LedList = { 2, 7 };  //only 1char, not include StringOutputValue
-        public const string PORT = "COM3";
+        public const string PORT = "COM8";
 
         public static readonly string[] ports = SerialPort.GetPortNames();
         public static WebSocket? ws;
