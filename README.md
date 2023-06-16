@@ -87,7 +87,7 @@ I didn't expect to have to learn so much about the streaming world, and in addit
 <h4>The technolegy</h4>
 <p align="center">
   <img src="https://i.imgur.com/2nZTK76.png" alt="Arduino UNO, Native way">
-  <img src="https://i.imgur.com/ErrjfLg.png" alt="Arduino WIFI 1010, IOT, Internet of thing">
+  <img src="https://i.imgur.com/MYAwmJS.png" alt="Arduino WIFI 1010, IOT, Internet of thing">
   <img src="https://i.imgur.com/6Hgzxgb.png" alt="Camera streaming">
   <img src="https://i.imgur.com/VpbjdQ4.png" alt="Coding demo">
   <img src="https://i.imgur.com/46PUbbR.png" alt="Comments and messages">
