@@ -11,11 +11,13 @@ This project controls a lamp inside my room, as well as 1 LED and a screen that 
 
 <h3>Inspiration, "Erez's Camera"</h3>
 <p>
-
 Several years ago, I came across a project called "Erez's Camera". The project provided control to turn on and off two lamps in a room through a website. From what I researched, the project used an LPT connection and the website displayed either a JAVA or FLASH application for streaming.<br>
 I visited this project from time to time and enjoyed turning the lamps on and off in the room (there was even a message once asking me to turn off the lamps because it was noon and he wanted to sleep 😊.<br>
 Link to the message in the <a href="https://www.fresh.co.il/vBulletin/showthread.php?t=330906&highlight">FRESH forum</a>.<br>
-<a href="https://web.archive.org/web/20050921232227/http://erez.myftp.org:80/">Link to the project from the archive</a>.
+<a href="https://web.archive.org/web/20050921232227/http://erez.myftp.org:80/">Link to the project from the archive</a>.<br>
+</p>
+<p align="center">
+<img src="https://i.imgur.com/4bM9j6G.png" alt="Erez's Camera, from archive.org">
 </p>
 
 <h3>Installation, all the physical equipment</h3>
@@ -87,7 +89,7 @@ I didn't expect to have to learn so much about the streaming world, and in addit
 <h4>The technolegy</h4>
 <p align="center">
   <img src="https://i.imgur.com/2nZTK76.png" alt="Arduino UNO, Native way">
-  <img src="https://i.imgur.com/MYAwmJS.png" alt="Arduino WIFI 1010, IOT, Internet of thing">
+  <img src="https://i.imgur.com/MYAwmJS.png" alt="Arduino WIFI 1010, IOT, Internet of things">
   <img src="https://i.imgur.com/6Hgzxgb.png" alt="Camera streaming">
   <img src="https://i.imgur.com/VpbjdQ4.png" alt="Coding demo">
   <img src="https://i.imgur.com/46PUbbR.png" alt="Comments and messages">
